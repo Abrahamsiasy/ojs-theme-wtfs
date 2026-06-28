@@ -7,8 +7,12 @@
 	{assign var="heading" value="h3"}
 {/if}
 
-{assign var=articleAuthors value=$javs.authorsDisplay.authors|default:[]}
-{assign var=articleAffiliations value=$javs.authorsDisplay.affiliations|default:[]}
+{assign var=articleAuthors value=[]}
+{assign var=articleAffiliations value=[]}
+{if $javs.authorsDisplay|default:false && is_array($javs.authorsDisplay)}
+	{assign var=articleAuthors value=$javs.authorsDisplay.authors|default:[]}
+	{assign var=articleAffiliations value=$javs.authorsDisplay.affiliations|default:[]}
+{/if}
 {assign var=articleCitations value=$parsedCitations|default:[]}
 {assign var=articlePrimaryGalleys value=$primaryGalleys|default:[]}
 
@@ -151,7 +155,7 @@
 					{if !empty($publication->getLocalizedData('keywords'))}
 						<div class="javs_article_keywords">
 							{foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
-								<span>{$keyword.name|escape}</span>
+								<span>{if is_array($keyword) && $keyword.name|default:false}{$keyword.name|escape}{else}{$keyword|escape}{/if}</span>
 							{/foreach}
 						</div>
 					{/if}

@@ -24,7 +24,7 @@
 		</div>
 	</nav>
 
-	{include file="frontend/objects/article_details.tpl" javsArticleSidebar=$javsArticleSidebar}
+	{include file="frontend/objects/article_details.tpl" javs=$javs javsArticleSidebar=$javsArticleSidebar}
 
 </div>
 

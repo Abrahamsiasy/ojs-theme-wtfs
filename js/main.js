@@ -427,4 +427,52 @@
 		}
 	});
 
+	// ── Homepage recent articles: load more ───────────────────────────────────
+	$(document).on('click', '[data-javs-load-more-articles]', function() {
+		var $btn = $(this);
+		if ($btn.prop('disabled') || $btn.hasClass('is-loading')) {
+			return;
+		}
+
+		var loadUrl = $btn.data('loadUrl');
+		var offset = parseInt($btn.attr('data-offset'), 10) || 0;
+		var defaultLabel = $btn.data('label') || $btn.text();
+		var loadingLabel = $btn.data('loadingLabel') || 'Loading…';
+		var $grid = $btn.closest('.javs_home_container').find('.javs_home_article_grid').first();
+
+		if (!loadUrl || !$grid.length) {
+			return;
+		}
+
+		$btn.prop('disabled', true).addClass('is-loading').text(loadingLabel);
+
+		$.getJSON(loadUrl, { offset: offset })
+			.done(function(response) {
+				var html = (response && (response.html || response.content)) || '';
+
+				if (response && response.status === true && html) {
+					$grid.append(html);
+				}
+
+				if (response && response.status === true && response.hasMore) {
+					$btn
+						.attr('data-offset', response.nextOffset)
+						.prop('disabled', false)
+						.removeClass('is-loading')
+						.text(defaultLabel);
+					return;
+				}
+
+				if (response && response.status === true) {
+					$btn.closest('.javs_home_center').remove();
+					return;
+				}
+
+				$btn.prop('disabled', false).removeClass('is-loading').text(defaultLabel);
+			})
+			.fail(function() {
+				$btn.prop('disabled', false).removeClass('is-loading').text(defaultLabel);
+			});
+	});
+
 })(jQuery);

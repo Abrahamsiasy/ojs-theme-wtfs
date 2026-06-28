@@ -163,6 +163,15 @@ msgstr "最新发表"
 msgid "plugins.themes.custom.homepage.recentlyPublishedLead"
 msgstr "精选 {$numIssues} 卷已发表文章。"
 
+msgid "plugins.themes.custom.homepage.viewAllArticles"
+msgstr "查看全部文章"
+
+msgid "plugins.themes.custom.homepage.loadMoreArticles"
+msgstr "加载更多文章"
+
+msgid "plugins.themes.custom.homepage.loadMoreArticles.loading"
+msgstr "加载中…"
+
 msgid "plugins.themes.custom.homepage.whyPublish"
 msgstr "为何向 {$journalName} 投稿"
 
@@ -261,3 +270,51 @@ msgstr "通讯作者"
 
 msgid "plugins.themes.custom.article.aboutThisArticle"
 msgstr "关于本文"
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.label"
+msgstr "首页学科领域"
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.description"
+msgstr "在首页显示列出期刊栏目的“学科领域”区块。"
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.option"
+msgstr "在首页显示学科领域区块。"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.label"
+msgstr "首页收录数据库"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.description"
+msgstr "每个数据库使用一个区块，格式见上方说明。区块之间空一行。"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLabel"
+msgstr "收录数据库 — 添加说明"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpIntro"
+msgstr "每个收录服务填写三行：显示名称、链接、图标文件名。"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpFields"
+msgstr "每个条目使用以下格式："
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpName"
+msgstr "第 1 行：[显示名称]（方括号内）"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpUrl"
+msgstr "第 2 行：url = 完整链接（含 https://）"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogo"
+msgstr "第 3 行：logo = SVG 文件名（不含 .svg，须与主题 img/indexed/ 目录中的文件一致）"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogosTitle"
+msgstr "可用图标文件："
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogoKey"
+msgstr "图标键名"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpCustomLogo"
+msgstr "自定义图标：将 your-file.svg 上传到服务器 plugins/themes/custom/img/indexed/，然后设置 logo = your-file。"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.errorInvalid"
+msgstr "无法读取任何收录数据库条目，请检查格式是否与上方说明一致。"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.errorUrl"
+msgstr "第 {$num} 条（{$name}）：url 不是有效链接。"

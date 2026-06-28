@@ -78,23 +78,21 @@ class HomepageLoader
             ->filterByPublished(true)
             ->getCount();
 
-        $recentLimit = max(1, min(12, (int) ($theme->getOption('homepageRecentArticlesCount') ?: 6)));
-        $recentArticles = Repo::submission()->getCollector()
-            ->filterByContextIds([$contextId])
-            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
-            ->orderBy(SubmissionCollector::ORDERBY_DATE_PUBLISHED, SubmissionCollector::ORDER_DIR_DESC)
-            ->limit($recentLimit)
-            ->getMany()
-            ->all();
+        $recentLimit = self::getRecentArticlesBatchSize($theme);
+        $recentArticles = self::fetchRecentArticles($contextId, 0, $recentLimit);
+        $recentArticlesLoaded = count($recentArticles);
 
+        $showSubjectAreas = (bool) $theme->getOption('homepageShowSubjectAreas');
         $sections = Repo::section()->getCollector()
             ->filterByContextIds([$contextId])
             ->excludeInactive(true)
             ->getMany()
             ->all();
 
-        $indexedRaw = (string) ($theme->getOption('homepageIndexedDatabases') ?: '');
-        $indexedDatabases = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', $indexedRaw))));
+        $indexedRaw = $theme->getOption('homepageIndexedDatabases') ?: '';
+        $request = Application::get()->getRequest();
+        $indexedAssetBase = $request->getBaseUrl() . '/' . $theme->getPluginPath();
+        $indexedDatabases = IndexedDatabaseHelper::parse($indexedRaw, $indexedAssetBase);
 
         $authorUserGroups = UserGroup::withRoleIds([Role::ROLE_ID_AUTHOR])
             ->withContextIds([$contextId])
@@ -113,12 +111,80 @@ class HomepageLoader
             'indexedCount' => count($indexedDatabases) ?: 10,
             'indexedDatabases' => $indexedDatabases,
             'recentArticles' => $recentArticles,
+            'recentArticlesHasMore' => $recentArticlesLoaded < $publishedCount,
+            'recentArticlesNextOffset' => $recentArticlesLoaded,
             'authorUserGroups' => $authorUserGroups,
+            'showSubjectAreas' => $showSubjectAreas,
             'sections' => $sections,
             'mastheadPreview' => self::getMastheadPreview($journal, max(1, min(10, (int) ($theme->getOption('homepageMastheadLimit') ?: 5)))),
             'doiPrefix' => $journal->getData('doiPrefix'),
             'supportedLocaleCount' => count($journal->getSupportedLocaleNames()),
         ];
+    }
+
+    public static function getRecentArticlesBatchSize(CustomThemePlugin $theme): int
+    {
+        return max(1, min(12, (int) ($theme->getOption('homepageRecentArticlesCount') ?: 12)));
+    }
+
+    public static function getPublishedArticleCount(int $contextId): int
+    {
+        return Repo::submission()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
+            ->getCount();
+    }
+
+    /**
+     * @return array<int, \APP\submission\Submission>
+     */
+    public static function fetchRecentArticles(int $contextId, int $offset, int $limit): array
+    {
+        return Repo::submission()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
+            ->orderBy(SubmissionCollector::ORDERBY_DATE_PUBLISHED, SubmissionCollector::ORDER_DIR_DESC)
+            ->limit($limit)
+            ->offset($offset)
+            ->getMany()
+            ->all();
+    }
+
+    /**
+     * @return array{html: string, count: int}
+     */
+    public static function renderRecentArticleCards(Journal $journal, CustomThemePlugin $theme, int $offset, int $limit): array
+    {
+        $articles = self::fetchRecentArticles($journal->getId(), $offset, $limit);
+        if (!$articles) {
+            return ['html' => '', 'count' => 0];
+        }
+
+        $request = Application::get()->getRequest();
+        $templateMgr = PKPTemplateManager::getManager($request);
+        $authorUserGroups = UserGroup::withRoleIds([Role::ROLE_ID_AUTHOR])
+            ->withContextIds([$journal->getId()])
+            ->get();
+        $sections = Repo::section()->getCollector()
+            ->filterByContextIds([$journal->getId()])
+            ->excludeInactive(true)
+            ->getMany()
+            ->all();
+
+        $templateMgr->assign([
+            'javsHomepage' => [
+                'sections' => $sections,
+            ],
+            'authorUserGroups' => $authorUserGroups,
+        ]);
+
+        $html = '';
+        foreach ($articles as $article) {
+            $templateMgr->assign('article', $article);
+            $html .= $templateMgr->fetch('frontend/pages/home/article_card.tpl');
+        }
+
+        return ['html' => $html, 'count' => count($articles)];
     }
 
     private static function getHeroTagline(Journal $journal, string $locale): string

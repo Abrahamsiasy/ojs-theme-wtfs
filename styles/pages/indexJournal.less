@@ -116,11 +116,16 @@ body.pkp_page_index {
 
 .javs_home_center {
 	text-align: center;
+
+	&--spaced {
+		margin-top: 36px;
+	}
 }
 
 .javs_btn {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 	gap: 8px;
 	padding: 12px 22px;
 	border-radius: @radius;
@@ -130,6 +135,11 @@ body.pkp_page_index {
 	border: 1.5px solid transparent;
 	transition: all 200ms ease;
 	text-decoration: none;
+
+	&.is-loading {
+		opacity: 0.72;
+		cursor: wait;
+	}
 
 	&--light {
 		background: #fff;
@@ -645,6 +655,29 @@ body.pkp_page_index {
 		color: @text-light;
 		font-style: italic;
 	}
+
+	&__doi {
+		margin-top: 8px;
+		font-size: 12px;
+		color: @text-light;
+	}
+
+	&__doi-label {
+		font-weight: @bold;
+		color: @text;
+		margin-right: 0.35em;
+	}
+
+	&__doi-link {
+		color: @bg-base;
+		text-decoration: none;
+		word-break: break-word;
+
+		&:hover,
+		&:focus-visible {
+			text-decoration: underline;
+		}
+	}
 }
 
 .javs_home_subject_grid {
@@ -711,31 +744,62 @@ body.pkp_page_index {
 
 .javs_home_indexed_grid {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	gap: 16px;
+	grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+	gap: 20px;
 
-	@media (max-width: @screen-lg-desktop) {
-		grid-template-columns: repeat(3, 1fr);
+	@media (max-width: @screen-phone) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
 	}
 }
 
 .javs_home_indexed_item {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 10px;
-	padding: 14px 16px;
+	justify-content: flex-start;
+	gap: 12px;
+	min-height: 132px;
+	padding: 20px 14px 18px;
 	background: @bg-cream;
 	border: 1px solid @bg-border-color;
-	border-radius: 8px;
+	border-radius: 10px;
 	font-size: 13px;
 	font-weight: @bold;
+	line-height: 1.35;
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
-	svg {
-		width: 18px;
-		height: 18px;
-		color: @bg-base;
-		flex-shrink: 0;
+	&:hover,
+	&:focus-visible {
+		border-color: fade(@bg-base, 35%);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+		transform: translateY(-2px);
+		outline: none;
 	}
+}
+
+.javs_home_indexed_item__logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	flex-shrink: 0;
+
+	img {
+		display: block;
+		width: 48px;
+		height: 48px;
+		object-fit: contain;
+	}
+}
+
+.javs_home_indexed_item__name {
+	display: block;
+	max-width: 100%;
 }
 
 .javs_home_article_grid {
@@ -743,7 +807,11 @@ body.pkp_page_index {
 	grid-template-columns: repeat(3, 1fr);
 	gap: 28px;
 
-	@media (max-width: @screen-desktop) {
+	@media (max-width: @screen-lg-desktop) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: @screen-tablet) {
 		grid-template-columns: 1fr;
 	}
 }
@@ -754,10 +822,28 @@ body.pkp_page_index {
 	border-radius: 8px;
 	padding: 24px;
 	border-bottom: 3px solid @bg-border-color;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
-	h3 {
+	&__type {
+		align-self: flex-start;
+	}
+
+	&__title {
 		font-size: 19px;
 		margin: 14px 0 8px;
+		line-height: 1.35;
+
+		a {
+			color: @bg-base;
+			text-decoration: none;
+
+			&:hover,
+			&:focus-visible {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	&__authors {
@@ -765,17 +851,46 @@ body.pkp_page_index {
 		font-style: italic;
 		color: @text-light;
 		margin-bottom: 14px;
+		flex: 1;
 	}
 
 	&__meta {
 		font-size: 12px;
 		color: @text-light;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
 		border-top: 1px solid @bg-border-color;
 		padding-top: 12px;
+		margin-top: auto;
+	}
+
+	&__meta-label,
+	&__doi-label {
+		font-weight: @bold;
+		color: @text;
+		margin-right: 0.35em;
+	}
+
+	&__date,
+	&__doi {
+		display: flex;
 		flex-wrap: wrap;
-		gap: 6px;
+		align-items: baseline;
+		gap: 0.35em;
+		width: 100%;
+	}
+
+	&__doi-link {
+		color: @bg-base;
+		text-decoration: none;
+		word-break: break-word;
+
+		&:hover,
+		&:focus-visible {
+			text-decoration: underline;
+		}
 	}
 }
 

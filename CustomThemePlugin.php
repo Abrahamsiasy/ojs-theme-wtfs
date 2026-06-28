@@ -15,6 +15,8 @@
 namespace APP\plugins\themes\custom;
 
 require_once __DIR__ . '/HomepageLoader.php';
+require_once __DIR__ . '/IndexedDatabaseHelper.php';
+require_once __DIR__ . '/HomepageRecentArticlesHandler.php';
 require_once __DIR__ . '/IssueLoader.php';
 require_once __DIR__ . '/ArchiveLoader.php';
 require_once __DIR__ . '/ArticleLoader.php';
@@ -23,6 +25,7 @@ use APP\core\Application;
 use APP\file\PublicFileManager;
 use PKP\config\Config;
 use PKP\core\PKPSessionGuard;
+use PKP\plugins\Hook;
 
 class CustomThemePlugin extends \PKP\plugins\ThemePlugin
 {
@@ -141,16 +144,22 @@ class CustomThemePlugin extends \PKP\plugins\ThemePlugin
             'default' => '8–12 wk',
         ]);
 
+        $this->addOption('homepageIndexedDatabasesHelp', 'FieldHTML', [
+            'label' => __('plugins.themes.custom.option.homepageIndexedDatabases.helpLabel'),
+            'description' => IndexedDatabaseHelper::getAdminHelpHtml(),
+        ]);
+
         $this->addOption('homepageIndexedDatabases', 'FieldTextarea', [
             'label' => __('plugins.themes.custom.option.homepageIndexedDatabases.label'),
             'description' => __('plugins.themes.custom.option.homepageIndexedDatabases.description'),
-            'default' => "CrossRef\nSemantic Scholar\nGoogle Scholar\nDimensions\nBASE\nROAD\nICI World of Journals\nEuroPub\nSciSpace\nR Discovery",
+            'size' => 'large',
+            'default' => IndexedDatabaseHelper::serializeForAdmin(IndexedDatabaseHelper::defaultEntries()),
         ]);
 
         $this->addOption('homepageRecentArticlesCount', 'FieldText', [
             'label' => __('plugins.themes.custom.option.homepageRecentArticlesCount.label'),
             'description' => __('plugins.themes.custom.option.homepageRecentArticlesCount.description'),
-            'default' => '6',
+            'default' => '12',
         ]);
 
         $this->addOption('homepageMastheadLimit', 'FieldText', [
@@ -159,10 +168,23 @@ class CustomThemePlugin extends \PKP\plugins\ThemePlugin
             'default' => '5',
         ]);
 
+        $this->addOption('homepageShowSubjectAreas', 'FieldOptions', [
+            'label' => __('plugins.themes.custom.option.homepageShowSubjectAreas.label'),
+            'description' => __('plugins.themes.custom.option.homepageShowSubjectAreas.description'),
+            'options' => [
+                [
+                    'value' => true,
+                    'label' => __('plugins.themes.custom.option.homepageShowSubjectAreas.option'),
+                ],
+            ],
+            'default' => true,
+        ]);
+
         HomepageLoader::register($this);
         IssueLoader::register($this);
         ArchiveLoader::register($this);
         ArticleLoader::register($this);
+        Hook::add('LoadHandler', [$this, 'loadPageHandler']);
         $this->addStyle('stylesheet', 'styles/index.less');
 
         // Store additional LESS variables to process based on options
@@ -279,6 +301,22 @@ class CustomThemePlugin extends \PKP\plugins\ThemePlugin
     }
 
     /**
+     * Route AJAX requests for homepage recent articles.
+     */
+    public function loadPageHandler(string $hookName, array $params): bool
+    {
+        $page = &$params[0];
+        $handler = &$params[3];
+
+        if ($page === 'javsHome' && $this->isActive()) {
+            $handler = new HomepageRecentArticlesHandler($this);
+            return true;
+        }
+
+        return Hook::CONTINUE;
+    }
+
+    /**
      * Get the name of the settings file to be installed on new journal
      * creation.
      *
@@ -289,8 +327,59 @@ class CustomThemePlugin extends \PKP\plugins\ThemePlugin
         return $this->getPluginPath() . '/settings.xml';
     }
 
+    /** @see ThemePlugin::getOptionValues */
+    public function getOptionValues(?int $contextId)
+    {
+        $values = parent::getOptionValues($contextId);
+
+        if (array_key_exists('homepageIndexedDatabases', $values) && $values['homepageIndexedDatabases'] !== null) {
+            $values['homepageIndexedDatabases'] = IndexedDatabaseHelper::serializeForAdmin(
+                IndexedDatabaseHelper::decodeEntries($values['homepageIndexedDatabases'])
+            );
+        }
+
+        return $values;
+    }
+
+    /** @see ThemePlugin::validateOptions */
+    public function validateOptions($options, $themePluginPath, $contextId, $request)
+    {
+        $errors = parent::validateOptions($options, $themePluginPath, $contextId, $request);
+
+        if ($themePluginPath !== $this->getDirName() || !isset($options['homepageIndexedDatabases'])) {
+            return $errors;
+        }
+
+        $entries = IndexedDatabaseHelper::decodeEntries((string) $options['homepageIndexedDatabases']);
+        if (trim((string) $options['homepageIndexedDatabases']) !== '' && !$entries) {
+            $errors['homepageIndexedDatabases'][] = __('plugins.themes.custom.option.homepageIndexedDatabases.errorInvalid');
+            return $errors;
+        }
+
+        foreach ($entries as $index => $entry) {
+            $url = $entry['url'] ?? '';
+            if ($url !== '' && !filter_var($url, FILTER_VALIDATE_URL)) {
+                $errors['homepageIndexedDatabases'][] = __(
+                    'plugins.themes.custom.option.homepageIndexedDatabases.errorUrl',
+                    ['name' => $entry['name'], 'num' => $index + 1]
+                );
+            }
+        }
+
+        return $errors;
+    }
+
     /** @see ThemePlugin::saveOption */
     public function saveOption($name, $value, $contextId = null) {
+        if ($name === 'homepageIndexedDatabases') {
+            if ($value === '' || $value === null) {
+                $value = '';
+            } else {
+                $entries = IndexedDatabaseHelper::decodeEntries((string) $value);
+                $value = $entries ? IndexedDatabaseHelper::encodeForStorage($entries) : '';
+            }
+        }
+
         // Validate the base colour setting value (pkp/pkp-lib#11974).
         if (in_array($name, ['baseColour', 'headerFooterColour'], true) && !preg_match('/^#[0-9a-fA-F]{1,6}$/', $value)) {
             $value = null;

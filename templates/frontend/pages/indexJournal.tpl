@@ -170,6 +170,14 @@
 									<div class="javs_home_toc__authors">
 										{$publication->getAuthorString($authorUserGroups)|escape}
 									</div>
+									{assign var=tocDoiObject value=$publication->getData('doiObject')}
+									{if $tocDoiObject}
+										{assign var=tocDoiUrl value=$tocDoiObject->getData('resolvingUrl')|escape}
+										<div class="javs_home_toc__doi">
+											<span class="javs_home_toc__doi-label">{translate key="doi.readerDisplayName"}:</span>
+											<a href="{$tocDoiUrl}" class="javs_home_toc__doi-link">{$tocDoiObject->getDoi()|escape}</a>
+										</div>
+									{/if}
 								</li>
 							{/foreach}
 						{/foreach}
@@ -192,6 +200,21 @@
 						{include file="frontend/pages/home/article_card.tpl" article=$article authorUserGroups=$javs.authorUserGroups}
 					{/foreach}
 				</div>
+				{if $javs.recentArticlesHasMore}
+				<div class="javs_home_center javs_home_center--spaced">
+					<button
+						type="button"
+						class="javs_btn javs_btn--outline"
+						data-javs-load-more-articles
+						data-load-url="{url page="javsHome" op="recentArticles"|escape}"
+						data-offset="{$javs.recentArticlesNextOffset|escape}"
+						data-label="{translate key="plugins.themes.custom.homepage.loadMoreArticles"|escape}"
+						data-loading-label="{translate key="plugins.themes.custom.homepage.loadMoreArticles.loading"|escape}"
+					>
+						{translate key="plugins.themes.custom.homepage.loadMoreArticles"} →
+					</button>
+				</div>
+				{/if}
 			</div>
 		</section>
 	{/if}
@@ -231,7 +254,7 @@
 	{/if}
 
 	{* ── Subject Areas (journal sections) ── *}
-	{if $javs.sections && is_array($javs.sections) && $javs.sections|@count}
+	{if $javs.showSubjectAreas && $javs.sections && is_array($javs.sections) && $javs.sections|@count}
 		<section class="javs_home_section">
 			<div class="javs_home_container">
 				<div class="javs_home_section_head">
@@ -261,11 +284,27 @@
 					<p>{translate key="plugins.themes.custom.homepage.indexedInLead"}</p>
 				</div>
 				<div class="javs_home_indexed_grid">
-					{foreach from=$javs.indexedDatabases item=dbName}
-						<div class="javs_home_indexed_item">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-							{$dbName|escape}
-						</div>
+					{foreach from=$javs.indexedDatabases item=db}
+						{if $db.url}
+							<a href="{$db.url|escape}" class="javs_home_indexed_item" target="_blank" rel="noopener noreferrer">
+						{else}
+							<div class="javs_home_indexed_item">
+						{/if}
+							<span class="javs_home_indexed_item__logo">
+								<img
+									src="{$db.logoUrl|escape}"
+									alt=""
+									width="48"
+									height="48"
+									loading="lazy"
+								>
+							</span>
+							<span class="javs_home_indexed_item__name">{$db.name|escape}</span>
+						{if $db.url}
+							</a>
+						{else}
+							</div>
+						{/if}
 					{/foreach}
 				</div>
 			</div>

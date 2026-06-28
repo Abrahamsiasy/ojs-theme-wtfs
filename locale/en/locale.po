@@ -171,6 +171,15 @@ msgstr "Recently Published"
 msgid "plugins.themes.custom.homepage.recentlyPublishedLead"
 msgstr "Selected articles from across {$numIssues} published volumes."
 
+msgid "plugins.themes.custom.homepage.viewAllArticles"
+msgstr "View All Articles"
+
+msgid "plugins.themes.custom.homepage.loadMoreArticles"
+msgstr "Load More Articles"
+
+msgid "plugins.themes.custom.homepage.loadMoreArticles.loading"
+msgstr "Loading…"
+
 msgid "plugins.themes.custom.homepage.whyPublish"
 msgstr "Why Publish With {$journalName}"
 
@@ -220,22 +229,64 @@ msgid "plugins.themes.custom.option.homepageStatsReviewTime.description"
 msgstr "Displayed in the homepage stats bar (e.g. 8–12 wk)."
 
 msgid "plugins.themes.custom.option.homepageIndexedDatabases.label"
-msgstr "Indexed databases"
+msgstr "Indexed In (homepage)"
 
 msgid "plugins.themes.custom.option.homepageIndexedDatabases.description"
-msgstr "One database name per line. Shown in the Indexed In section on the homepage."
+msgstr "One database per block. Use the format shown in the guide above. Separate each database with a blank line."
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLabel"
+msgstr "Indexed In — how to add databases"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpIntro"
+msgstr "Add each indexing service using three lines: display name, link, and logo file name."
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpFields"
+msgstr "Use this format for every entry:"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpName"
+msgstr "Line 1: [Display name] in square brackets"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpUrl"
+msgstr "Line 2: url = full link (include https://)"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogo"
+msgstr "Line 3: logo = SVG file name without .svg (must match a file in the theme img/indexed/ folder)"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogosTitle"
+msgstr "Available logo files:"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpLogoKey"
+msgstr "Logo key"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.helpCustomLogo"
+msgstr "To add a custom logo, upload your-file.svg to plugins/themes/custom/img/indexed/ on the server, then set logo = your-file."
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.errorInvalid"
+msgstr "Could not read any indexed database entries. Check the format in the guide above."
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.errorUrl"
+msgstr "Entry {$num} ({$name}): the url value is not a valid link."
 
 msgid "plugins.themes.custom.option.homepageRecentArticlesCount.label"
 msgstr "Recent articles on homepage"
 
 msgid "plugins.themes.custom.option.homepageRecentArticlesCount.description"
-msgstr "Number of recently published articles to display (1–12)."
+msgstr "Number of recently published articles to display on the homepage (1–12)."
 
 msgid "plugins.themes.custom.option.homepageMastheadLimit.label"
 msgstr "Editorial team preview count"
 
 msgid "plugins.themes.custom.option.homepageMastheadLimit.description"
 msgstr "Maximum number of editorial team members shown on the homepage."
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.label"
+msgstr "Subject areas on homepage"
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.description"
+msgstr "Show the Subject Areas section listing journal sections on the homepage."
+
+msgid "plugins.themes.custom.option.homepageShowSubjectAreas.option"
+msgstr "Display subject areas section on the homepage."
 
 msgid "plugins.themes.custom.issue.published"
 msgstr "Published {$date}"

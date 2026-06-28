@@ -1,0 +1,46 @@
+/**
+ * @file styles/pages/login.less
+ *
+ * @link lib/pkp/templates/frontend/pages/userLogin.tpl
+ */
+@import "../components/wtsf-form-inputs.less";
+
+body.pkp_page_login,
+body.pkp_page_login.pkp_op_index {
+	background: @bg-cream;
+}
+
+.page_login {
+
+	.cmp_form.login {
+		max-width: 460px;
+	}
+
+	.password a {
+		font-size: 12px;
+		font-style: normal;
+	}
+
+	.remember {
+		padding-bottom: 0;
+	}
+
+	.buttons {
+		margin-top: @base;
+
+		button {
+			float: none;
+			width: 100%;
+			justify-content: center;
+			padding: 12px 22px;
+			font-size: 15px;
+		}
+
+		a {
+			float: none;
+			display: block;
+			text-align: center;
+			margin: @base 0 0;
+		}
+	}
+}

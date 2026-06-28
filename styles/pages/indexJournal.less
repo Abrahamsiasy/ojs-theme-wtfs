@@ -1,0 +1,922 @@
+/**
+ * @file plugins/themes/custom/styles/pages/indexJournal.less
+ *
+ * WTSF-style journal homepage — full-bleed sections, cream canvas (#F4F1DE),
+ * sidebar blocks in a right column beside cream homepage sections only.
+ */
+
+// ── Page shell: cream canvas, full-width sections ─────────────────────────────
+
+body.pkp_page_index {
+	background: @bg-cream;
+}
+
+.pkp_page_index.pkp_op_index {
+
+	.pkp_structure_content {
+		max-width: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		display: block;
+		background: @bg-cream;
+	}
+
+	.pkp_structure_main {
+		padding: 0;
+		max-width: none;
+		width: 100%;
+		background: @bg-cream;
+	}
+
+	// Sidebar is embedded between homepage sections only — never as a side column
+	.pkp_structure_sidebar {
+		display: none !important;
+	}
+}
+
+.page_index_journal.javs_home {
+	width: 100%;
+	background: @bg-cream;
+}
+
+// Inner column — aligned with header/footer (1200px)
+.javs_home_container {
+	max-width: @page-container;
+	margin: 0 auto;
+	padding: 0 @page-gutter;
+	box-sizing: border-box;
+}
+
+// Full-bleed section band (edge-to-edge background)
+.javs_home_section--full {
+	width: 100%;
+}
+
+.javs_home_section {
+	padding: 90px 0;
+	background: @bg-cream;
+
+	&--cream {
+		background: @bg-cream;
+	}
+}
+
+.javs_home_section_head {
+	margin-bottom: 48px;
+
+	h2 {
+		font-family: @font-heading;
+		font-size: 36px;
+		margin: 0 0 10px;
+		color: @text;
+	}
+
+	p {
+		color: @text-light;
+		max-width: 620px;
+		margin: 0;
+	}
+
+	&--center {
+		text-align: center;
+
+		p {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+.javs_home_eyebrow {
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: #fff !important;
+	opacity: .88;
+	margin-bottom: 14px;
+	font-weight: @bold;
+}
+
+.javs_home_pill {
+	display: inline-block;
+	font-size: 11px;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: #7a5a3a;
+	background: fade(@accent-wheat, 18%);
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-weight: @bold;
+	margin-bottom: 8px;
+}
+
+.javs_home_center {
+	text-align: center;
+}
+
+.javs_btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 22px;
+	border-radius: @radius;
+	font-family: @font;
+	font-weight: @bold;
+	font-size: 15px;
+	border: 1.5px solid transparent;
+	transition: all 200ms ease;
+	text-decoration: none;
+
+	&--light {
+		background: #fff;
+		color: @bg-base;
+
+		&:hover {
+			background: @bg-cream;
+			color: @bg-base;
+		}
+	}
+
+	&--secondary {
+		background: transparent;
+		color: #fff;
+		border-color: rgba(255, 255, 255, .7);
+
+		&:hover {
+			background: rgba(255, 255, 255, .1);
+			color: #fff;
+		}
+	}
+
+	&--outline {
+		background: transparent;
+		color: @bg-base;
+		border-color: @bg-base;
+
+		&:hover {
+			background: @bg-base;
+			color: #fff;
+		}
+	}
+
+	&--cream {
+		background: @bg-cream;
+		color: @bg-base;
+
+		&:hover {
+			background: #fff;
+			color: @bg-base;
+		}
+	}
+}
+
+.javs_home_hero {
+	position: relative;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	background: linear-gradient(135deg, @bg-base 0%, @bg-base-light 100%);
+	color: #fff;
+	padding: 48px 0 56px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><g fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.08'><circle cx='480' cy='120' r='60'/><circle cx='480' cy='120' r='40'/><circle cx='480' cy='120' r='20'/></g></svg>");
+		background-size: cover;
+		opacity: .5;
+		pointer-events: none;
+	}
+
+	&__grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1.3fr 1fr;
+		gap: 40px;
+		align-items: center;
+	}
+
+	&__copy {
+		color: #fff;
+
+		h1, h2, h3, h4, h5, h6, p, span, div {
+			color: #fff;
+		}
+	}
+
+	&__title {
+		font-family: @font-heading;
+		font-size: clamp(28px, 3.6vw, 46px);
+		color: #fff !important;
+		margin: 0 0 10px;
+		line-height: 1.15;
+	}
+
+	&__zh {
+		font-family: @font-zh;
+		font-size: 20px;
+		color: #fff !important;
+		opacity: .85;
+		margin-bottom: 14px;
+	}
+
+	&__subhead {
+		font-size: 16px;
+		line-height: 1.55;
+		color: #fff !important;
+		opacity: .92;
+		margin: 0 0 22px;
+		max-width: 520px;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+		overflow: hidden;
+	}
+
+	&__actions {
+		display: flex;
+		gap: 14px;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: @screen-desktop) {
+		padding: 40px 0 48px;
+
+		&__grid {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		&__subhead {
+			-webkit-line-clamp: 3;
+		}
+	}
+}
+
+.javs_home_featured {
+	background: #fff;
+	border-radius: 10px;
+	padding: 22px;
+	color: @text;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, .18);
+	transform: rotate(-1deg);
+	transition: transform 200ms ease;
+
+	&:hover {
+		transform: rotate(0deg) translateY(-4px);
+	}
+
+	&__label {
+		font-size: 11px;
+		letter-spacing: .15em;
+		text-transform: uppercase;
+		color: @accent-wheat;
+		font-weight: @bold;
+		margin-bottom: 10px;
+	}
+
+	&__cover {
+		height: 140px;
+		border-radius: 6px;
+		margin-bottom: 16px;
+		background: linear-gradient(135deg, @bg-base, @bg-base-light);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: @font-heading;
+		font-size: 22px;
+		text-align: center;
+		padding: 18px;
+	}
+
+	&__title {
+		font-family: @font-heading;
+		font-size: 18px;
+		margin: 0 0 8px;
+
+		a {
+			color: @text;
+			text-decoration: none;
+
+			&:hover {
+				color: @bg-base;
+			}
+		}
+	}
+
+	&__authors {
+		font-size: 13px;
+		color: @text-light;
+		font-style: italic;
+		margin-bottom: 14px;
+	}
+
+	&__read {
+		color: @bg-base;
+		font-weight: @bold;
+		font-size: 14px;
+	}
+}
+
+.javs_home_stats {
+	width: 100%;
+	background: @text;
+	color: @bg-cream;
+	padding: 40px 0;
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 30px;
+		text-align: center;
+	}
+
+	@media (max-width: @screen-tablet) {
+		&__grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+.javs_home_stat__num {
+	font-family: @font-heading;
+	font-size: 42px;
+	color: @accent-wheat;
+	font-weight: @bold;
+	line-height: 1;
+}
+
+.javs_home_stat__lbl {
+	font-size: 13px;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: #cfcfc4;
+	margin-top: 8px;
+}
+
+// ── Cream zone + right sidebar (custom blocks beside cream sections only) ───
+
+.javs_home_with_sidebar {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) @sidebar-width;
+	gap: @triple;
+	width: 100%;
+	max-width: (@page-container + @sidebar-width + @triple);
+	margin: 0 auto;
+	padding: 0 @page-gutter;
+	align-items: start;
+	box-sizing: border-box;
+	background: @bg-cream;
+
+	&__main {
+		min-width: 0;
+		max-width: @page-container;
+
+		.javs_home_section--cream {
+			background: @bg-cream;
+		}
+
+		// Section content fills the main column (no nested 1200px cap)
+		.javs_home_container {
+			max-width: none;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	&__sidebar {
+		position: sticky;
+		top: 88px;
+		align-self: start;
+		padding-top: 90px;
+		padding-bottom: 90px;
+		background: @bg-cream;
+	}
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: 1fr;
+		max-width: @page-container;
+
+		&__main {
+			max-width: none;
+		}
+
+		&__sidebar {
+			position: static;
+			padding: 0 0 @triple;
+			border-top: 1px solid fade(@bg-border-color, 65%);
+		}
+	}
+}
+
+.javs_home_sidebar__stack {
+	display: flex;
+	flex-direction: column;
+	gap: @double;
+
+	.pkp_block {
+		margin-bottom: 0;
+		box-shadow: 0 1px 3px rgba(44, 44, 52, .04);
+	}
+}
+
+.javs_home_current_issue {
+	display: grid;
+	grid-template-columns: minmax(240px, 340px) 1fr;
+	gap: 60px;
+	align-items: start;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+}
+
+.javs_home_current_issue__cover_col {
+	max-width: 340px;
+
+	@media (max-width: @screen-desktop) {
+		max-width: 320px;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+
+.javs_home_issue_cover {
+	position: relative;
+	display: block;
+	aspect-ratio: 3 / 4;
+	border-radius: 10px;
+	overflow: hidden;
+	color: #fff;
+	font-family: @font-heading;
+	text-decoration: none;
+	box-shadow: 0 18px 40px fade(@bg-base, 22%);
+	transition: transform 220ms ease, box-shadow 220ms ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 24px 48px fade(@bg-base, 30%);
+	}
+
+	&__img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	&__overlay {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+		padding: 32px 28px;
+		box-sizing: border-box;
+	}
+
+	&__top {
+		font-size: 12px;
+		letter-spacing: .2em;
+		text-transform: uppercase;
+		opacity: .88;
+		font-weight: @bold;
+	}
+
+	&__center {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 20px 0;
+	}
+
+	&__mid {
+		font-size: clamp(22px, 2.4vw, 30px);
+		line-height: 1.2;
+		font-weight: @bold;
+		text-wrap: balance;
+	}
+
+	&__mid-zh {
+		font-family: @font-zh;
+		font-size: 17px;
+		margin-top: 10px;
+		opacity: .88;
+		letter-spacing: .06em;
+		line-height: 1.35;
+	}
+
+	&__bot {
+		font-size: 13px;
+		opacity: .9;
+		letter-spacing: .04em;
+		padding-top: 12px;
+		border-top: 1px solid rgba(255, 255, 255, .18);
+	}
+
+	// No cover image — full brand gradient card (reference index.html)
+	&--placeholder {
+		background: linear-gradient(160deg, @bg-base 0%, @bg-base-light 55%, darken(@bg-base-light, 6%) 100%);
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 520'><g fill='none' stroke='%23ffffff' stroke-width='1' opacity='0.07'><circle cx='340' cy='80' r='50'/><circle cx='340' cy='80' r='32'/><path d='M20 480 Q120 430 220 460 T380 400'/></g></svg>");
+			background-size: cover;
+			background-position: center;
+			pointer-events: none;
+		}
+
+		.javs_home_issue_cover__overlay {
+			position: relative;
+		}
+
+		.javs_home_issue_cover__bot {
+			border-top-color: rgba(255, 255, 255, .22);
+		}
+	}
+
+	// Cover image — lighter scrim so photo shows through; text stays readable
+	&--photo {
+		background: @bg-shade;
+
+		.javs_home_issue_cover__overlay {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0.08) 0%,
+				rgba(0, 0, 0, 0.18) 38%,
+				fade(@bg-base, 72%) 100%
+			);
+			justify-content: flex-end;
+			padding-top: 48px;
+		}
+
+		.javs_home_issue_cover__center {
+			flex: 0;
+			justify-content: flex-end;
+			padding: 0 0 16px;
+		}
+
+		.javs_home_issue_cover__mid {
+			font-size: clamp(18px, 2vw, 24px);
+			text-shadow: 0 1px 12px rgba(0, 0, 0, .35);
+		}
+
+		.javs_home_issue_cover__mid-zh {
+			font-size: 15px;
+		}
+
+		.javs_home_issue_cover__top {
+			position: absolute;
+			top: 24px;
+			left: 28px;
+			right: 28px;
+			text-shadow: 0 1px 8px rgba(0, 0, 0, .4);
+		}
+
+		.javs_home_issue_cover__bot {
+			border-top-color: rgba(255, 255, 255, .25);
+		}
+	}
+}
+
+.javs_home_issue_meta {
+	margin-top: 18px;
+
+	&__vol {
+		font-family: @font-heading;
+		font-size: 18px;
+		color: @bg-base;
+		margin-bottom: 4px;
+	}
+
+	a {
+		font-weight: @bold;
+		color: @bg-base;
+		text-decoration: none;
+
+		&:hover {
+			color: @bg-base-light;
+		}
+	}
+}
+
+.javs_home_toc {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&__item {
+		padding: 18px 0;
+		border-bottom: 1px solid @bg-border-color;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		h4 {
+			font-family: @font-heading;
+			font-size: 19px;
+			margin: 0 0 6px;
+
+			a {
+				color: @bg-base;
+				text-decoration: none;
+			}
+		}
+	}
+
+	&__authors {
+		font-size: 14px;
+		color: @text-light;
+		font-style: italic;
+	}
+}
+
+.javs_home_subject_grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: @screen-phone) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.javs_home_subject_card {
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	padding: 28px;
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 0;
+		background: @bg-base;
+		transition: width 200ms ease;
+	}
+
+	&:hover::before {
+		width: 4px;
+	}
+
+	h3 {
+		font-size: 19px;
+		margin: 0;
+	}
+}
+
+.javs_home_subject_icon {
+	width: 46px;
+	height: 46px;
+	border-radius: 8px;
+	background: @bg-cream;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: @bg-base;
+	margin-bottom: 16px;
+}
+
+.javs_home_indexed {
+	width: 100%;
+	padding: 60px 0;
+	background: #fff;
+	border-top: 1px solid @bg-border-color;
+	border-bottom: 1px solid @bg-border-color;
+}
+
+.javs_home_indexed_grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 16px;
+
+	@media (max-width: @screen-lg-desktop) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.javs_home_indexed_item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 16px;
+	background: @bg-cream;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	font-size: 13px;
+	font-weight: @bold;
+
+	svg {
+		width: 18px;
+		height: 18px;
+		color: @bg-base;
+		flex-shrink: 0;
+	}
+}
+
+.javs_home_article_grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 28px;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.javs_home_article_card {
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	padding: 24px;
+	border-bottom: 3px solid @bg-border-color;
+
+	h3 {
+		font-size: 19px;
+		margin: 14px 0 8px;
+	}
+
+	&__authors {
+		font-size: 14px;
+		font-style: italic;
+		color: @text-light;
+		margin-bottom: 14px;
+	}
+
+	&__meta {
+		font-size: 12px;
+		color: @text-light;
+		display: flex;
+		justify-content: space-between;
+		border-top: 1px solid @bg-border-color;
+		padding-top: 12px;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+}
+
+.javs_home_why_grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.javs_home_why_icon {
+	width: 54px;
+	height: 54px;
+	border-radius: 10px;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: @bg-base;
+	margin-bottom: 18px;
+	border: 1px solid @bg-border-color;
+}
+
+.javs_home_editors {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 24px;
+	margin-bottom: 36px;
+
+	@media (max-width: @screen-lg-desktop) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.javs_home_editor {
+	text-align: center;
+
+	&__avatar {
+		width: 110px;
+		height: 110px;
+		border-radius: 50%;
+		margin: 0 auto 14px;
+		background: linear-gradient(135deg, @bg-base-light, @accent-wheat);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: @font-heading;
+		font-size: 34px;
+	}
+
+	h4 {
+		font-size: 16px;
+		margin: 0;
+	}
+
+	&__role {
+		font-size: 13px;
+		color: @text-light;
+	}
+
+	&__inst {
+		font-size: 12px;
+		color: @accent-wheat;
+		font-weight: @bold;
+	}
+}
+
+.javs_home_announcements {
+	width: 100%;
+	background: @text;
+	color: @bg-cream;
+
+	.javs_home_section_head h2 {
+		color: #fff;
+	}
+}
+
+.javs_home_ann_grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.javs_home_ann_card {
+	background: rgba(255, 255, 255, .04);
+	border: 1px solid rgba(255, 255, 255, .08);
+	padding: 26px;
+	border-radius: 8px;
+
+	h3 {
+		color: #fff;
+		font-size: 19px;
+		margin: 0 0 10px;
+
+		a {
+			color: #fff;
+		}
+	}
+
+	p {
+		color: fade(@bg-cream, 75%);
+		font-size: 14px;
+	}
+
+	&__date {
+		color: @accent-wheat;
+		font-size: 13px;
+		font-weight: @bold;
+		margin-bottom: 10px;
+	}
+
+	> a {
+		color: @accent-wheat;
+		font-weight: @bold;
+	}
+}
+
+.javs_home_cta {
+	width: 100%;
+	background: linear-gradient(135deg, @bg-base, @bg-base-light);
+	color: #fff;
+	text-align: center;
+	padding: 80px 0;
+
+	h2 {
+		color: #fff;
+		font-size: 42px;
+		margin: 0 0 14px;
+	}
+
+	p {
+		font-size: 18px;
+		opacity: .9;
+		margin: 0 0 30px;
+	}
+}

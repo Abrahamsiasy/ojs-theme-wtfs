@@ -1,0 +1,160 @@
+/**
+ * @file plugins/themes/custom/styles/footer.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief Dark footer shell — background uses admin "Header & footer colour".
+ */
+
+.pkp_structure_footer_wrapper {
+	width: 100%;
+	margin-top: auto;
+	flex-shrink: 0;
+	background: @bg-bar;
+	color: #cfcfc4;
+	padding: (@triple * 2) 0 @double;
+}
+
+.pkp_structure_footer {
+	.pkp_helpers_clear;
+	position: relative;
+	width: 100%;
+	max-width: @page-container;
+	margin: 0 auto;
+	padding-left: @page-gutter;
+	padding-right: @page-gutter;
+	text-align: left;
+}
+
+@media (max-width: 600px) {
+
+	.pkp_structure_footer {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}
+
+.pkp_footer_content {
+	padding: 0 0 @triple;
+	text-align: left;
+	font-size: @font-sml;
+	line-height: @line-base-large;
+	color: #a8a89e;
+
+	> *:first-child { margin-top: 0; }
+	> *:last-child  { margin-bottom: 0; }
+
+	h3, h4 {
+		color: #fff;
+		font-size: 15px;
+		font-family: @font;
+		text-transform: uppercase;
+		letter-spacing: .1em;
+		margin-bottom: @base;
+		font-weight: @bold;
+	}
+
+	a {
+		color: #cfcfc4;
+		text-decoration: none;
+		transition: color 200ms ease;
+
+		&:hover,
+		&:focus {
+			color: @accent-wheat;
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-bottom: @half;
+		}
+	}
+
+	p {
+		line-height: @line-base-large;
+		color: #a8a89e;
+	}
+}
+
+// 4-column grid layout for footer content pasted via admin
+.foot-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: @triple;
+	margin-bottom: @triple;
+
+	@media (min-width: @screen-tablet) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: @screen-desktop) {
+		grid-template-columns: 1.4fr 1fr 1fr 1fr;
+	}
+}
+
+.foot-col {
+	// inherits h4, ul, a, p styles from .pkp_footer_content above
+}
+
+.foot-desc {
+	font-size: 13px;
+	line-height: 1.7;
+	color: #a8a89e;
+	margin: @base 0;
+}
+
+.foot-issn {
+	font-size: 12px;
+	color: #7a7a72;
+	margin-top: @half;
+	letter-spacing: .04em;
+}
+
+.foot-bottom {
+	border-top: 1px solid rgba(255,255,255,.08);
+	padding-top: @double;
+	margin-top: @base;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: @base;
+	font-size: 12px;
+	color: #8c8c80;
+
+	a {
+		color: #8c8c80;
+		&:hover { color: #cfcfc4; }
+	}
+}
+
+// Divider above brand footer
+.pkp_brand_footer {
+	.pkp_helpers_clear();
+	padding-top: @double;
+	border-top: 1px solid rgba(255,255,255,.08);
+	font-size: 12px;
+	color: #8c8c80;
+
+	a {
+		float: right;
+		display: block;
+		max-width: 120px;
+		opacity: .6;
+		transition: opacity 200ms ease;
+
+		&:hover { opacity: 1; }
+	}
+
+	img {
+		display: block;
+		width: auto;
+		max-height: 32px;
+	}
+}

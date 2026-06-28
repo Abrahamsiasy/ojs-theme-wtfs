@@ -1,0 +1,97 @@
+# "10 ..." <jaana.tonisson@tlulib.ee>, 2025.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-04-07 10:50+0000\n"
+"Last-Translator: \"10 ...\" <jaana.tonisson@tlulib.ee>\n"
+"Language-Team: Estonian <http://translate.pkp.sfu.ca/projects/ojs/"
+"themes-default/et/>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+msgid "plugins.themes.custom.name"
+msgstr "Vaikimisi teema"
+
+msgid "plugins.themes.custom.description"
+msgstr "See teema rakendab vaiketeema."
+
+msgid "plugins.themes.custom.option.typography.label"
+msgstr "Tüpograafia"
+
+msgid "plugins.themes.custom.option.typography.description"
+msgstr "Vali kirjastiilide kombinatsioon, mis sobib sellele ajakirjale."
+
+msgid "plugins.themes.custom.option.typography.notoSans"
+msgstr ""
+"Noto Sans: digitaalne kirjastiil, mis on disainitud Google poolt "
+"ulatuslikuks keeletoeks."
+
+msgid "plugins.themes.custom.option.typography.notoSerif"
+msgstr "Noto Serif: Google loodud serif kirjatüüp."
+
+msgid "plugins.themes.custom.option.typography.notoSerif_notoSans"
+msgstr ""
+"Noto Serif/Noto Sans: kombinatsioon serif-pealkirjast ja sans-serif tekstist."
+
+msgid "plugins.themes.custom.option.typography.notoSans_notoSerif"
+msgstr ""
+"Noto Sans/Noto Serif: kombinatsioon sans-serif-pealkirjast ja serif-tekstist."
+
+msgid "plugins.themes.custom.option.typography.lato"
+msgstr "Lato: populaarne moderne sans-serif kirjatüüp."
+
+msgid "plugins.themes.custom.option.typography.lora"
+msgstr "Lora: laia asetusega serif kirjatüüp, mis on hea veebis lugemiseks."
+
+msgid "plugins.themes.custom.option.typography.lora_openSans"
+msgstr "Lora/Open Sans: kombinatsioon serif-peakirjast ja sans-serif tekstist."
+
+msgid "plugins.themes.custom.option.colour.label"
+msgstr "Värv"
+
+msgid "plugins.themes.custom.option.colour.description"
+msgstr "Vali päise värv."
+
+msgid "plugins.themes.custom.option.showDescriptionInJournalIndex.option"
+msgstr "Kuva ajakirja kokkuvõte avalehel."
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.label"
+msgstr "Päise taustapilt"
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.description"
+msgstr ""
+"Kui kodulehe pilt on üles laetud, kuva seda päise taustal, mitte tavapärasel "
+"kohal kodulehel."
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.option"
+msgstr "Kuva kodulehe pilt päise taustapildina."
+
+msgid "plugins.themes.custom.option.displayStats.label"
+msgstr "Kasutusstatistika kuvamise valikud"
+
+msgid "plugins.themes.custom.option.displayStats.none"
+msgstr "Ära kuva kaastööde kasutusstatistika graafikut lugejatele."
+
+msgid "plugins.themes.custom.option.displayStats.bar"
+msgstr "Kasuta tulpadega graafikut kasutusstatistika kuvamiseks."
+
+msgid "plugins.themes.custom.option.displayStats.line"
+msgstr "Kasuta joontega graafikut kasutusstatistika kuvamiseks."
+
+msgid "plugins.themes.custom.displayStats.monthInitials"
+msgstr "Jaan Veeb Mär Apr Mai Juuni Juuli Aug Sept Okt Nov Dets"
+
+msgid "plugins.themes.custom.displayStats.downloads"
+msgstr "Allalaadimised"
+
+msgid "plugins.themes.custom.displayStats.noStats"
+msgstr "Allalaadimiste andmed pole veel saadaval."
+
+msgid "plugins.themes.custom.nextSlide"
+msgstr "Järgmine slaid"
+
+msgid "plugins.themes.custom.prevSlide"
+msgstr "Eelmine slaid"

@@ -1,0 +1,181 @@
+/**
+ * @file plugins/themes/custom/styles/body.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief Site layout — contained body (1200px), sticky footer.
+ */
+
+html {
+	height: 100%;
+}
+
+html,
+body {
+	min-height: 100%;
+	font-family: @font;
+	font-size: @rem;
+	line-height: 1.7;
+	color: @text;
+	background: @bg;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	color: @primary;
+	text-decoration: none;
+	transition: color 200ms ease;
+
+	&:hover,
+	&:focus {
+		color: @primary-lift;
+	}
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: @font-heading;
+	color: @text;
+	line-height: 1.25;
+}
+
+img {
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	display: block;
+}
+
+// ─── Sticky footer page shell ────────────────────────────────────────────────
+
+.pkp_structure_page {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 auto;
+	min-height: 100vh;
+	width: 100%;
+	overflow-x: clip;
+}
+
+.pkp_structure_head {
+	flex-shrink: 0;
+}
+
+// ─── Contained content column (matches .javs_header_container / footer) ─────
+
+.pkp_structure_content {
+	flex: 1 0 auto;
+	display: flow-root;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: @page-container;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: @page-gutter;
+	padding-right: @page-gutter;
+	padding-bottom: @triple;
+	overflow-x: clip;
+}
+
+@media (max-width: 600px) {
+
+	.pkp_structure_content {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+}
+
+.pkp_structure_main {
+	padding-top: @base;
+	padding-bottom: @base;
+}
+
+@media (min-width: @screen-phone) {
+
+	.pkp_structure_main {
+		padding-top: @double;
+		padding-bottom: @double;
+	}
+}
+
+@media (min-width: @screen-desktop) {
+
+	.pkp_structure_content {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		gap: @triple;
+		padding-top: @triple;
+	}
+
+	.pkp_structure_main {
+		flex: 1 1 auto;
+		min-width: 0;
+		order: 1;
+		padding: 0 0 (@triple * 3);
+		width: auto;
+	}
+
+	.pkp_structure_sidebar {
+		flex: 0 0 @sidebar-width;
+		width: @sidebar-width;
+		max-width: @sidebar-width;
+		order: 2;
+	}
+}
+
+// No sidebar — main fills the contained column
+.pkp_structure_main:first-child:last-child {
+
+	@media (min-width: @screen-desktop) {
+		flex: 1 1 100%;
+		width: 100%;
+		max-width: none;
+		margin-top: @quadruple;
+	}
+}
+
+// ─── Header nav helpers (not full page width) ────────────────────────────────
+
+.pkp_site_name_wrapper,
+.pkp_navigation_primary_wrapper,
+.pkp_search_mobile {
+	position: relative;
+}
+
+.has_site_logo {
+	.pkp_site_name,
+	.pkp_navigation_primary_wrapper {
+		width: auto;
+	}
+
+	.pkp_site_name_wrapper {
+		flex: 0 1 auto;
+		margin: 0;
+		padding: 0;
+		max-width: none;
+	}
+
+	.pkp_site_name {
+		display: flex;
+		align-items: center;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.javs_logo--solo {
+		display: inline-flex;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
+	}
+}

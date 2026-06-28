@@ -1,0 +1,880 @@
+/**
+ * @file plugins/themes/custom/styles/head.less
+ *
+ * WTSF/JTS header — matches ojs-theme-wtsf-2-main (topbar + sticky navbar).
+ * Colours use theme variables (@bg-bar, @bg-base, @bg, @topbar-text, @text).
+ */
+
+@nav-collapse:           981px;   // Reference: max-width 980px
+@topbar-padding-y:       6px;
+@topbar-link-gap:        18px;
+@navbar-padding-y:       14px;
+@navbar-padding-y-sm:    8px;
+@nav-link-gap:           20px;
+@mobile-nav-padding:     16px 20px;
+
+// ─── Header shell ────────────────────────────────────────────────────────────
+
+.javs_header {
+	position: relative;
+	z-index: 50;
+}
+
+.javs_header_container {
+	position: relative;
+	width: 100%;
+	max-width: @header-container;
+	margin: 0 auto;
+	padding-left: @header-gutter;
+	padding-right: @header-gutter;
+}
+
+// ─── Topbar (reference: .topbar) ─────────────────────────────────────────────
+
+.javs_topbar {
+	background: @bg-bar;
+	color: @topbar-text;
+	font-size: 12px;
+	line-height: 1.4;
+	padding: @topbar-padding-y 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+// Single row: journal meta (left) · utility links (right) — reference .topbar .container
+.javs_topbar_row {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	gap: 8px;
+	width: 100%;
+
+	// clearfix from legacy helpers breaks flex layout
+	&::before,
+	&::after {
+		display: none !important;
+		content: none !important;
+	}
+}
+
+.javs_topbar_meta {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 65%;
+	letter-spacing: .04em;
+	white-space: nowrap;
+}
+
+.javs_topbar_meta > * + *::before {
+	content: "·";
+	margin: 0 8px;
+	opacity: .6;
+}
+
+.javs_issn,
+.javs_badge {
+	display: inline;
+	color: fade(@topbar-text, 90%);
+	white-space: nowrap;
+}
+
+.javs_badge {
+	font-weight: 500;
+}
+
+.javs_topbar_links {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	flex: 0 0 auto;
+	flex-shrink: 0;
+	flex-wrap: nowrap !important;
+	gap: @topbar-link-gap;
+	white-space: nowrap;
+	margin-left: auto;
+	text-align: right;
+
+	> a {
+		display: inline-block;
+		flex: 0 0 auto;
+		color: fade(@topbar-text, 92%);
+		margin: 0;
+		padding: 0 2px;
+		font-size: 12px;
+		font-weight: 500;
+		text-decoration: none;
+		white-space: nowrap;
+		transition: color 200ms ease;
+
+		&:hover,
+		&:focus {
+			color: #fff;
+			outline: 0;
+		}
+	}
+
+	// User menu (Login, Register, Contact, …) — inline like reference .topbar .links
+	> .pkp_navigation_user,
+	.pkp_navigation_user {
+		display: inline-flex !important;
+		flex-direction: row !important;
+		align-items: center;
+		flex: 0 0 auto !important;
+		flex-flow: row nowrap;
+		gap: @topbar-link-gap;
+		width: auto !important;
+		max-width: none;
+		margin: 0 !important;
+		padding: 0 !important;
+		list-style: none;
+		white-space: nowrap;
+		vertical-align: middle;
+
+		&::before,
+		&::after {
+			display: none !important;
+		}
+
+		> li {
+			display: inline-block !important;
+			float: none !important;
+			width: auto !important;
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+
+		> li > a {
+			display: inline-block;
+			color: fade(@topbar-text, 92%);
+			margin: 0;
+			padding: 0 2px;
+			font-size: 12px;
+			font-weight: 500;
+			line-height: inherit;
+			text-decoration: none;
+			white-space: nowrap;
+			background: transparent;
+			border: none;
+			border-radius: 0;
+			transition: color 200ms ease;
+
+			&:hover,
+			&:focus {
+				color: #fff;
+				background: transparent;
+				outline: 0;
+				transform: none;
+			}
+		}
+
+		// Logged-in user parent (e.g. admin) — dropdown for Dashboard, Profile, …
+		> li.javs_topbar_user_parent {
+			position: relative;
+		}
+
+		> li.javs_topbar_user_parent > a[aria-haspopup]::after {
+			display: inline-block;
+			content: "";
+			width: 0;
+			height: 0;
+			margin-left: 0.35em;
+			border-top: 4px solid currentColor;
+			border-right: 4px solid transparent;
+			border-left: 4px solid transparent;
+			vertical-align: middle;
+			opacity: .85;
+		}
+
+		> li > ul {
+			display: none;
+			position: absolute;
+			top: calc(100% + 6px);
+			right: 0;
+			left: auto;
+			z-index: 1100;
+			min-width: 12em;
+			margin: 0;
+			padding: @half 0;
+			list-style: none;
+			background: darken(@bg-bar, 4%);
+			border: 1px solid rgba(255, 255, 255, .12);
+			border-radius: @radius;
+			box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+
+			> li {
+				display: block;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+
+			a {
+				display: block;
+				margin: 0;
+				padding: @base @double;
+				color: fade(@topbar-text, 95%);
+				font-size: 12px;
+				font-weight: 500;
+				line-height: 1.4;
+				text-decoration: none;
+				white-space: nowrap;
+				border-radius: 0;
+				transition:
+					color      200ms ease,
+					background 200ms ease;
+
+				&:hover,
+				&:focus {
+					color: #fff;
+					background: rgba(255, 255, 255, .1);
+					outline: 0;
+				}
+			}
+		}
+
+		> li.javs_topbar_user_parent:hover > ul,
+		> li.javs_topbar_user_parent:focus-within > ul,
+		> li.javs_topbar_user_open > ul,
+		> li > ul.show {
+			display: block;
+		}
+
+		.task_count {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 1.1em;
+			height: 1.1em;
+			margin-left: 0.35em;
+			padding: 0 0.25em;
+			border-radius: 999px;
+			background: @bg-base;
+			color: #fff;
+			font-size: 0.7rem;
+			font-weight: @bold;
+		}
+	}
+}
+
+// ─── Navbar (reference: .navbar) ───────────────────────────────────────────
+
+.javs_navbar {
+	background: @bg;
+	border-bottom: 1px solid @bg-border-color;
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	transition: box-shadow 200ms ease;
+
+	&.scrolled {
+		box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+	}
+
+	.pkp_head_wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: @navbar-padding-y;
+		padding-bottom: @navbar-padding-y;
+		transition: padding 200ms ease;
+	}
+
+	&.scrolled .pkp_head_wrapper {
+		padding-top: @navbar-padding-y-sm;
+		padding-bottom: @navbar-padding-y-sm;
+	}
+}
+
+.pkp_structure_head {
+	background: transparent;
+	border-bottom: none;
+	position: static;
+	box-shadow: none;
+}
+
+// ─── Logo (reference: .logo) ─────────────────────────────────────────────────
+
+.pkp_site_name_wrapper {
+	position: relative;
+	flex: 0 1 auto;
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+.pkp_site_name {
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	white-space: normal;
+	text-overflow: clip;
+	position: static;
+	left: auto;
+	right: auto;
+}
+
+.javs_logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	font-family: @font-site-title;
+	font-size: 22px;
+	font-weight: @bold;
+	color: @bg-base;
+	line-height: 1.1;
+	text-decoration: none;
+	transition: color 200ms ease;
+
+	&:hover,
+	&:focus {
+		color: @bg-base-light;
+		text-decoration: none;
+		outline: 0;
+	}
+}
+
+.javs_logo_text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.javs_logo__main {
+	font-size: 18px;
+	font-weight: @bold;
+	color: @bg-base;
+	line-height: 1.15;
+}
+
+.javs_logo__sub {
+	font-size: 11px;
+	font-weight: @normal;
+	color: @text-light;
+	letter-spacing: .05em;
+	line-height: 1.2;
+	max-width: 280px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.javs_logo.is_img img {
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	display: block;
+}
+
+// Journal logo image only (no acronym / title beside it)
+.javs_logo--solo {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+
+	img {
+		display: block;
+		width: auto;
+		height: auto;
+		max-height: 52px;
+		max-width: 240px;
+		object-fit: contain;
+		border-radius: 10px;
+	}
+}
+
+.javs_navbar.scrolled .javs_logo--solo img {
+	max-height: 44px;
+	max-width: 200px;
+}
+
+@media (max-width: (@nav-collapse - 1)) {
+	.javs_logo--solo img {
+		max-height: 48px;
+		max-width: 180px;
+	}
+
+	.javs_navbar.scrolled .javs_logo--solo img {
+		max-height: 40px;
+		max-width: 160px;
+	}
+}
+
+html[lang="zh-Hans"],
+html[lang="zh-Hant"],
+html[lang^="zh"] {
+	.javs_logo__sub {
+		font-family: @font-zh;
+		letter-spacing: .08em;
+	}
+}
+
+// ─── Primary nav (reference: .nav-links) ───────────────────────────────────────
+
+.pkp_site_nav_menu {
+	position: static;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+}
+
+.pkp_navigation_primary_wrapper {
+	padding: 0;
+	width: auto;
+}
+
+#navigationPrimary.javs_nav_links {
+	display: flex;
+	align-items: center;
+	gap: @nav-link-gap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+
+	> li {
+		position: relative;
+		display: block;
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	> li > a {
+		display: inline-block;
+		position: relative;
+		padding: 6px 2px;
+		margin: 0;
+		color: @text;
+		font-family: @font;
+		font-size: 15px;
+		font-weight: 500;
+		line-height: 1.4;
+		text-decoration: none;
+		border: none;
+		border-radius: @radius;
+		background: transparent;
+		transition:
+			color      200ms ease,
+			background 200ms ease;
+
+		&:hover,
+		&:focus {
+			color: @bg-base;
+			background: @bg-cream;
+			outline: 0;
+		}
+
+		&.active,
+		&.is_active {
+			color: @bg-base;
+			background: transparent;
+			box-shadow: inset 0 -4px 0 @bg-base;
+		}
+	}
+
+	// Dropdown submenus (desktop)
+	ul {
+		position: absolute;
+		top: 100%;
+		left: -9999px;
+		z-index: 1000;
+		width: 16em;
+		min-width: 13em;
+		margin: 4px 0 0;
+		padding: @half 0;
+		list-style: none;
+		background: @bg;
+		border: 1px solid @bg-border-color;
+		border-radius: @radius;
+		box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+		opacity: 0;
+		transform: translateY(-4px);
+		transition: opacity 200ms ease, transform 200ms ease;
+
+		li {
+			display: block;
+		}
+
+		a {
+			display: block;
+			padding: @base @double;
+			margin: 0;
+			font-size: @font-sml;
+			color: @text;
+			border: none;
+
+			&:hover,
+			&:focus {
+				color: @bg-base;
+				background: @bg-cream;
+			}
+
+			&.active,
+			&.is_active {
+				color: @bg-base;
+				font-weight: @bold;
+				background: @bg-cream;
+			}
+		}
+	}
+
+	// Top-level parent when a submenu page is current (e.g. About → Contact)
+	> li.javs_nav_ancestor > a {
+		color: @bg-base;
+		box-shadow: inset 0 -4px 0 @bg-base;
+	}
+
+	> li:hover > ul,
+	> li:focus-within > ul,
+	> li.javs_nav_ancestor:hover > ul {
+		left: 0;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	[aria-haspopup]:after {
+		display: inline-block;
+		content: "";
+		width: 0;
+		height: 0;
+		margin-left: 0.3em;
+		border-top: 4px solid currentColor;
+		border-right: 4px solid transparent;
+		border-left: 4px solid transparent;
+		vertical-align: middle;
+	}
+}
+
+.pkp_navigation_search_wrapper {
+	margin-left: @double;
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35em;
+		padding: 6px 2px;
+		border-radius: @radius;
+		color: @text;
+		font-size: 15px;
+		font-weight: 500;
+		text-decoration: none;
+		background: transparent;
+		transition:
+			color      200ms ease,
+			background 200ms ease;
+
+		&:hover,
+		&:focus {
+			color: @bg-base;
+			background: @bg-cream;
+			outline: 0;
+		}
+	}
+}
+
+// ─── Mobile ≤ 980px (reference responsive) ───────────────────────────────────
+
+@media (max-width: (@nav-collapse - 1)) {
+
+	.javs_navbar .pkp_head_wrapper {
+		flex-wrap: wrap;
+		position: relative;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+
+	.pkp_site_name_wrapper {
+		display: flex;
+		align-items: center;
+		flex: 1;
+		min-height: 48px;
+		width: calc(100% - 48px);
+	}
+
+	.pkp_site_nav_toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		left: auto;
+		transform: translateY(-50%);
+		width: 48px;
+		height: 48px;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		color: @text;
+		z-index: 10;
+
+		&:hover {
+			background: rgba(0, 0, 0, .04);
+		}
+
+		&:focus {
+			outline: 2px solid @bg-base;
+			outline-offset: 2px;
+		}
+	}
+
+	.pkp_site_name {
+		padding-right: 48px;
+	}
+
+	.pkp_site_nav_menu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		width: 100%;
+		margin: 0;
+		padding: @mobile-nav-padding;
+		background: @bg;
+		border-bottom: 1px solid @bg-border-color;
+		z-index: 9999;
+
+		&.pkp_site_nav_menu--isOpen {
+			display: block;
+		}
+	}
+
+	#navigationPrimary.javs_nav_links {
+		display: none;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+		width: 100%;
+
+		[aria-haspopup]:after {
+			display: none;
+		}
+
+		&.javs_nav_open {
+			display: flex;
+		}
+
+		> li {
+			padding: 4px 0;
+			border-bottom: 1px solid @bg-border-color;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		> li > a {
+			display: block;
+			padding: 10px 12px;
+			border-radius: @radius;
+			font-size: 15px;
+			transition:
+				color      200ms ease,
+				background 200ms ease;
+
+			&:hover,
+			&:focus {
+				color: @bg-base;
+				background: @bg-cream;
+			}
+
+			&.active,
+			&.is_active {
+				color: @bg-base;
+				background: @bg-cream;
+				box-shadow: none;
+			}
+		}
+
+		> li.javs_nav_ancestor > a.active {
+			color: @bg-base;
+			font-weight: @bold;
+		}
+
+		// Submenus: collapsed until parent is tapped (see main.js)
+		ul {
+			display: none;
+			position: static;
+			left: auto;
+			opacity: 1;
+			transform: none;
+			width: auto;
+			margin: 0;
+			padding: 0 0 @half @base;
+			box-shadow: none;
+			border: none;
+			border-left: 2px solid @bg-border-color;
+			background: transparent;
+
+			a {
+				padding: @half 0 @half @half;
+				font-size: @font-sml;
+				color: @text-light;
+
+				&.active,
+				&.is_active {
+					color: @bg-base;
+					font-weight: @bold;
+				}
+			}
+		}
+
+		li.javs_submenu_open > ul {
+			display: block;
+		}
+
+		li.javs_has_submenu > a {
+			padding-right: 28px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				width: 0;
+				height: 0;
+				margin-top: -2px;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-left: 5px solid @text-light;
+				transition: transform 200ms ease;
+			}
+		}
+
+		li.javs_submenu_open.javs_has_submenu > a::after {
+			transform: rotate(90deg);
+		}
+	}
+
+	.pkp_navigation_search_wrapper {
+		margin: 12px 0 0;
+		padding-top: 12px;
+		border-top: 1px solid @bg-border-color;
+
+		a {
+			display: block;
+			padding: 10px 12px;
+			border-radius: @radius;
+
+			&:hover,
+			&:focus {
+				background: @bg-cream;
+				color: @bg-base;
+			}
+		}
+	}
+}
+
+// Small phones (reference: max-width 600px — topbar may wrap, centered)
+@media (max-width: @screen-phone) {
+
+	.javs_header_container {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.javs_topbar_row {
+		flex-wrap: wrap !important;
+		justify-content: center !important;
+		text-align: center;
+	}
+
+	.javs_topbar_meta {
+		flex: 1 1 100%;
+		max-width: 100%;
+		justify-content: center;
+		white-space: normal;
+	}
+
+	.javs_topbar_links {
+		flex: 1 1 100%;
+		justify-content: center;
+		flex-wrap: wrap !important;
+		gap: 10px @topbar-link-gap;
+		margin-left: 0;
+		text-align: center;
+
+		.pkp_navigation_user {
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 10px @topbar-link-gap;
+		}
+	}
+
+	.javs_logo__sub {
+		display: none;
+	}
+}
+
+// ─── Desktop ≥ 981px ───────────────────────────────────────────────────────────
+
+@media (min-width: @nav-collapse) {
+
+	.pkp_site_nav_toggle {
+		display: none;
+	}
+
+	.pkp_site_nav_menu {
+		display: block !important;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.pkp_navigation_primary_row {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+	}
+
+	.pkp_navigation_primary_wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+	}
+
+	#navigationPrimary.javs_nav_links {
+		display: flex !important;
+	}
+
+	// Desktop dropdown behaviour (Bootstrap shim retained)
+	.dropdown-menu {
+		display: none;
+
+		&.show {
+			display: block;
+		}
+	}
+
+	[data-toggle="dropdown"]:hover + .dropdown-menu,
+	.dropdown-menu:hover {
+		display: block;
+	}
+
+	#navigationPrimary.javs_nav_links > li:hover > ul,
+	#navigationPrimary.javs_nav_links > li:focus-within > ul {
+		left: 0;
+		top: 100%;
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}

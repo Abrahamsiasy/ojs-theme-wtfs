@@ -1,0 +1,42 @@
+/**
+ * @file plugins/themes/custom/styles/components/nav-toggle.less
+ *
+ * Mobile menu toggle — SVG hamburger (WTSF reference). Desktop hidden in head.less.
+ */
+
+.pkp_site_nav_toggle {
+	// Base mobile styles in head.less; hide hamburger bars pseudo-icon
+	> span:not(.pkp_screen_reader) {
+		display: none;
+	}
+
+	.javs_menu_icon {
+		display: block;
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.pkp_site_nav_toggle--transform .javs_menu_icon line:nth-child(1) {
+	transform: translateY(6px) rotate(45deg);
+	transform-origin: center;
+}
+
+.pkp_site_nav_toggle--transform .javs_menu_icon line:nth-child(2) {
+	opacity: 0;
+}
+
+.pkp_site_nav_toggle--transform .javs_menu_icon line:nth-child(3) {
+	transform: translateY(-6px) rotate(-45deg);
+	transform-origin: center;
+}
+
+.pkp_site_nav_toggle .javs_menu_icon line {
+	transition: transform 200ms ease, opacity 200ms ease;
+}
+
+@media (min-width: 981px) {
+	.pkp_site_nav_menu {
+		display: block;
+	}
+}

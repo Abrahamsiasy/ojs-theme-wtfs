@@ -1,0 +1,263 @@
+# Huang Feilong <hfl@nominsang.org>, 2021.
+# wenshao521！ <wainixueer3334@gmail.com>, 2025.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-05-15 10:57+0000\n"
+"Last-Translator: wenshao521！ <wainixueer3334@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <http://translate.pkp.sfu.ca/projects/"
+"ojs/themes-default/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+msgid "plugins.themes.custom.name"
+msgstr "自定义主题"
+
+msgid "plugins.themes.custom.description"
+msgstr "期刊自定义前台主题（支持中英文界面）。"
+
+msgid "plugins.themes.custom.option.typography.label"
+msgstr "排版"
+
+msgid "plugins.themes.custom.option.typography.description"
+msgstr "选择适合此期刊的字体组合。"
+
+msgid "plugins.themes.custom.option.typography.notoSans"
+msgstr "Noto Sans：由Google设计的数字原生字体，可提供广泛的语言支持。"
+
+msgid "plugins.themes.custom.option.typography.notoSerif"
+msgstr "Noto Serif：Google数字原生字体的 serif 变体。"
+
+msgid "plugins.themes.custom.option.typography.notoSerif_notoSans"
+msgstr "Noto Serif / Noto Sans：与衬线标题和无衬线正文文本互补的完美组合。"
+
+msgid "plugins.themes.custom.option.typography.notoSans_notoSerif"
+msgstr "Noto Sans / Noto Serif：与 sans-serif 标题和衬线体文本的完美组合。"
+
+msgid "plugins.themes.custom.option.typography.lato"
+msgstr "Lato：一种流行的现代无衬线字体。"
+
+msgid "plugins.themes.custom.option.typography.lora"
+msgstr "Lora：广泛使用的衬线字体，非常适合在线阅读。"
+
+msgid "plugins.themes.custom.option.typography.lora_openSans"
+msgstr "Lora / Open Sans：与衬线标题和无衬线正文文本完美组合。"
+
+msgid "plugins.themes.custom.option.colour.label"
+msgstr "强调色"
+
+msgid "plugins.themes.custom.option.colour.description"
+msgstr "用于链接、刊名标识和导航高亮的主色。"
+
+msgid "plugins.themes.custom.option.headerFooterColour.label"
+msgstr "页眉与页脚颜色"
+
+msgid "plugins.themes.custom.option.headerFooterColour.description"
+msgstr "顶部工具栏和页脚的背景色。"
+
+msgid "plugins.themes.custom.option.showDescriptionInJournalIndex.option"
+msgstr "在主页上显示期刊简介。"
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.label"
+msgstr "标头背景图片"
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.description"
+msgstr "上传首页图片后，将其显示在标头的背景中，而不是首页上的通常位置。"
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.option"
+msgstr "将首页图像显示为标头背景。"
+
+msgid "plugins.themes.custom.option.displayStats.label"
+msgstr "使用统计显示选项"
+
+msgid "plugins.themes.custom.option.displayStats.none"
+msgstr "不向读者显示提交稿件的使用统计图表。"
+
+msgid "plugins.themes.custom.option.displayStats.bar"
+msgstr "使用条形图显示使用统计数据。"
+
+msgid "plugins.themes.custom.option.displayStats.line"
+msgstr "使用折线图显示使用统计数据。"
+
+msgid "plugins.themes.custom.displayStats.monthInitials"
+msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
+
+msgid "plugins.themes.custom.displayStats.downloads"
+msgstr "下载次数"
+
+msgid "plugins.themes.custom.displayStats.noStats"
+msgstr "下载数据尚不可用。"
+
+msgid "plugins.themes.custom.nextSlide"
+msgstr "下一页"
+
+msgid "plugins.themes.custom.prevSlide"
+msgstr "上一页"
+
+msgid "plugins.themes.custom.nav.openMenu"
+msgstr "打开菜单"
+
+msgid "plugins.themes.custom.topbar.metaLabel"
+msgstr "期刊信息"
+
+msgid "plugins.themes.custom.topbar.makeSubmission"
+msgstr "在线投稿"
+
+msgid "plugins.themes.custom.topbar.peerReviewed"
+msgstr "同行评审"
+
+msgid "plugins.themes.custom.topbar.issnOnline"
+msgstr "电子 ISSN"
+
+msgid "plugins.themes.custom.topbar.issnPrint"
+msgstr "印刷 ISSN"
+
+msgid "plugins.themes.custom.homepage.browseCurrentIssue"
+msgstr "浏览当期"
+
+msgid "plugins.themes.custom.homepage.featuredArticle"
+msgstr "精选文章"
+
+msgid "plugins.themes.custom.homepage.readArticle"
+msgstr "阅读文章"
+
+msgid "plugins.themes.custom.homepage.stats.articles"
+msgstr "已发表文章"
+
+msgid "plugins.themes.custom.homepage.stats.indexing"
+msgstr "收录数据库"
+
+msgid "plugins.themes.custom.homepage.stats.reviewTime"
+msgstr "审稿周期"
+
+msgid "plugins.themes.custom.homepage.stats.openAccessSince"
+msgstr "开放获取始于"
+
+msgid "plugins.themes.custom.homepage.statsReviewTimeDefault"
+msgstr "8–12 周"
+
+msgid "plugins.themes.custom.homepage.currentIssueLead"
+msgstr "来自全球学者与实践者的最新研究成果。"
+
+msgid "plugins.themes.custom.homepage.viewFullIssue"
+msgstr "查看完整期次"
+
+msgid "plugins.themes.custom.homepage.subjectAreas"
+msgstr "学科领域"
+
+msgid "plugins.themes.custom.homepage.subjectAreasLead"
+msgstr "传统实践与现代科学交汇的学科板块。"
+
+msgid "plugins.themes.custom.homepage.indexedIn"
+msgstr "收录情况"
+
+msgid "plugins.themes.custom.homepage.indexedInLead"
+msgstr "文章可在主要学术数据库中被检索发现。"
+
+msgid "plugins.themes.custom.homepage.recentlyPublished"
+msgstr "最新发表"
+
+msgid "plugins.themes.custom.homepage.recentlyPublishedLead"
+msgstr "精选 {$numIssues} 卷已发表文章。"
+
+msgid "plugins.themes.custom.homepage.whyPublish"
+msgstr "为何向 {$journalName} 投稿"
+
+msgid "plugins.themes.custom.homepage.why.global.title"
+msgstr "双语与全球传播"
+
+msgid "plugins.themes.custom.homepage.why.global.text"
+msgstr "支持 {$numLocales} 种语言，开放获取，收录于 {$numIndexed}+ 个数据库。您的成果从发表首日即可触达全球学者。"
+
+msgid "plugins.themes.custom.homepage.why.review.title"
+msgstr "严格同行评审"
+
+msgid "plugins.themes.custom.homepage.why.review.text"
+msgstr "国际专家双盲评审，通常 {$reviewTime} 内给出决定，并提供建设性编辑意见。"
+
+msgid "plugins.themes.custom.homepage.why.doi.title"
+msgstr "每篇文章均有 DOI"
+
+msgid "plugins.themes.custom.homepage.why.doi.text"
+msgstr "Crossref 永久 DOI（前缀 {$doiPrefix}），引用持久可溯，并在主要学术数据库中可被发现。"
+
+msgid "plugins.themes.custom.homepage.why.doi.textGeneric"
+msgstr "永久 DOI、稳定引用，并在主要学术数据库中可被发现。"
+
+msgid "plugins.themes.custom.homepage.meetEditorialTeam"
+msgstr "查看完整编委会"
+
+msgid "plugins.themes.custom.homepage.announcementsLead"
+msgstr "特刊征稿、截止日期与期刊动态。"
+
+msgid "plugins.themes.custom.homepage.cta.title"
+msgstr "准备好分享您的研究成果了吗？"
+
+msgid "plugins.themes.custom.homepage.cta.text"
+msgstr "提交稿件，与推动本领域发展的学者同行。"
+
+msgid "plugins.themes.custom.homepage.cta.button"
+msgstr "注册并投稿"
+
+msgid "plugins.themes.custom.homepage.eyebrow.bilingual"
+msgstr "双语"
+
+msgid "plugins.themes.custom.issue.published"
+msgstr "出版日期 {$date}"
+
+msgid "plugins.themes.custom.issue.articleCount"
+msgstr "{$numArticles} 篇文章"
+
+msgid "plugins.themes.custom.issue.pageRange"
+msgstr "第 {$pages} 页"
+
+msgid "plugins.themes.custom.issue.pagesPrefix"
+msgstr "第 {$pages} 页"
+
+msgid "plugins.themes.custom.issue.downloadFullIssue"
+msgstr "下载整期 ({$label})"
+
+msgid "plugins.themes.custom.issue.citeThisIssue"
+msgstr "引用本期"
+
+msgid "plugins.themes.custom.issue.navigateIssues"
+msgstr "期次导航"
+
+msgid "plugins.themes.custom.issue.previousIssue"
+msgstr "← 上一期 ({$identification})"
+
+msgid "plugins.themes.custom.issue.nextIssue"
+msgstr "下一期 ({$identification}) →"
+
+msgid "plugins.themes.custom.issue.viewAllArchives"
+msgstr "查看全部过刊"
+
+msgid "plugins.themes.custom.archive.lead"
+msgstr "浏览 {$journalName} 的全部过刊。"
+
+msgid "plugins.themes.custom.archive.filterByYear"
+msgstr "按年份筛选"
+
+msgid "plugins.themes.custom.archive.allYears"
+msgstr "全部年份"
+
+msgid "plugins.themes.custom.archive.searchPlaceholder"
+msgstr "搜索过刊..."
+
+msgid "plugins.themes.custom.archive.articleCount"
+msgstr "{$numArticles} 篇文章"
+
+msgid "plugins.themes.custom.archive.noResults"
+msgstr "本页没有符合搜索条件的过刊。"
+
+msgid "plugins.themes.custom.archive.noIssuesForYear"
+msgstr "该年份没有已出版的期次。"
+
+msgid "plugins.themes.custom.article.correspondingAuthor"
+msgstr "通讯作者"
+
+msgid "plugins.themes.custom.article.aboutThisArticle"
+msgstr "关于本文"

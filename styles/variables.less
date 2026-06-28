@@ -1,0 +1,116 @@
+/**
+ * @file plugins/themes/custom/styles/variables.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief JAVS theme variables — journal of agriculture aesthetic.
+ */
+
+//
+// Colors
+//
+
+// Page background
+@bg:                     #fafaf7; // --soft-white
+
+// Border / shade
+@bg-shade:               #e8e3d0; // --border (replaces the old #ddd)
+
+// Main accent (links, logo, active nav) — overridden by "Accent colour" theme option
+@bg-base:                #6d2d3d; // --ink-deep burgundy
+
+// Topbar + footer shell — overridden by "Header & footer colour" theme option
+@bg-bar:                 #4a1d28;
+
+// Static accent palette (never overridden by admin)
+@bg-cream:               #f4f1de; // --cream
+@accent-wheat:           #a18441; // --wheat antique gold
+@topbar-text:            #f0e6d8; // cream text on dark bar
+
+// Derived from dynamic base (LESS computes at compile time)
+@bg-base-light:          lighten(@bg-base, 12%);
+@bg-base-dark:           @bg-bar;
+
+// Primary link color (tracks the brand)
+@primary:                @bg-base;
+@primary-lift:           @bg-base-light;
+
+// Status
+@yes:                    #00b24e;
+@no:                     #ff4040;
+
+// Text
+@text:                   #2c2c34; // --charcoal
+@text-light:             #7a7a72; // --muted
+@text-bg-base:           #fff;
+
+// Border colors
+@bg-border-color:        #e8e3d0;
+@bg-base-border-color:   rgba(255,255,255,0.1);
+
+//
+// Spacing
+//
+@rem:                    14px;
+@base:                   0.714rem;
+@half:                   0.357rem;
+@double:                 1.43rem;
+@triple:                 2.143rem;
+@quadruple:              2.857rem;
+
+//
+// Typography
+//
+@font:                   'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+@font-heading:           'Lora', Georgia, 'Times New Roman', serif;
+@font-zh:                'Noto Serif SC', @font-heading, serif;
+@font-site-title:        @font-heading;
+
+@font-sml:               0.875rem;
+@line-sml:               1.43rem;
+@font-base:              1rem;
+@line-base:              1.5rem;
+@line-base-large:        1.75rem;
+@font-bump:              1.125rem;
+@line-bump:              1.5rem;
+@font-lead:              1.25rem;
+@line-lead:              2rem;
+@font-header:            1.714rem;
+@line-header:            2.143rem;
+
+// Font weights
+@normal:                 400;
+@bold:                   600;
+
+//
+// Borders
+//
+@bg-border:              1px solid @bg-border-color;
+@form-border:            1px solid rgba(0,0,0,0.3);
+@radius:                 6px;
+
+//
+// Screen width breakpoints
+//
+@screen-phone:                480px;
+@screen-tablet:               768px;
+@screen-tablet-container:     @screen-tablet - 40px;
+@screen-desktop:              992px;
+@screen-desktop-container:    @screen-desktop - 40px;
+@screen-lg-desktop:           1200px;
+@screen-lg-desktop-container: @screen-lg-desktop - 40px;
+
+// Page layout (WTSF reference: 1200px container, 24px gutters — header, body, footer)
+@header-container:            @screen-lg-desktop;
+@header-gutter:               24px;
+@page-container:              @header-container;
+@page-gutter:                 @header-gutter;
+
+// Fixed widths
+@sidebar-width:               300px;
+@logo-height:                 8.571rem;
+
+// Base URL (leave empty — set by theme at compile time)
+@base-url:                   '';

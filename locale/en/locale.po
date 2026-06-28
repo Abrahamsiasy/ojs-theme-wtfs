@@ -1,0 +1,295 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-30T06:56:50-07:00\n"
+"PO-Revision-Date: 2019-09-30T06:56:50-07:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.custom.name"
+msgstr "Custom Theme"
+
+msgid "plugins.themes.custom.description"
+msgstr "Custom theme for SU-JAVS, based on the default OJS theme."
+
+msgid "plugins.themes.custom.option.typography.label"
+msgstr "Typography"
+
+msgid "plugins.themes.custom.option.typography.description"
+msgstr "Choose a font combination that suits this journal."
+
+msgid "plugins.themes.custom.option.typography.notoSans"
+msgstr ""
+"Noto Sans: A digital-native font designed by Google for extensive language "
+"support."
+
+msgid "plugins.themes.custom.option.typography.notoSerif"
+msgstr "Noto Serif: A serif variant of Google's digital-native font."
+
+msgid "plugins.themes.custom.option.typography.notoSerif_notoSans"
+msgstr ""
+"Noto Serif/Noto Sans: A complementary pairing with serif headings and sans-"
+"serif body text."
+
+msgid "plugins.themes.custom.option.typography.notoSans_notoSerif"
+msgstr ""
+"Noto Sans/Noto Serif: A complementary pairing with sans-serif headings and "
+"serif body text."
+
+msgid "plugins.themes.custom.option.typography.lato"
+msgstr "Lato: A popular modern sans-serif font."
+
+msgid "plugins.themes.custom.option.typography.lora"
+msgstr "Lora: A wide-set serif font good for reading online."
+
+msgid "plugins.themes.custom.option.typography.lora_openSans"
+msgstr ""
+"Lora/Open Sans: A complimentary pairing with serif headings and sans-serif "
+"body text."
+
+msgid "plugins.themes.custom.option.colour.label"
+msgstr "Accent colour"
+
+msgid "plugins.themes.custom.option.colour.description"
+msgstr "Main brand colour for links, logo text, and active navigation items."
+
+msgid "plugins.themes.custom.option.headerFooterColour.label"
+msgstr "Header & footer colour"
+
+msgid "plugins.themes.custom.option.headerFooterColour.description"
+msgstr "Background colour for the top utility bar and site footer."
+
+msgid "plugins.themes.custom.option.showDescriptionInJournalIndex.option"
+msgstr "Show the journal summary on the homepage."
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.label"
+msgstr "Header Background Image"
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.description"
+msgstr ""
+"When a homepage image has been uploaded, display it in the background of the "
+"header instead of it's usual position on the homepage."
+
+msgid "plugins.themes.custom.option.useHomepageImageAsHeader.option"
+msgstr "Show the homepage image as the header background."
+
+msgid "plugins.themes.custom.option.displayStats.label"
+msgstr "Usage statistics display options"
+
+msgid "plugins.themes.custom.option.displayStats.none"
+msgstr "Do not display submission usage statistics chart for reader."
+
+msgid "plugins.themes.custom.option.displayStats.bar"
+msgstr "Use bar type of the chart for usage statistics display."
+
+msgid "plugins.themes.custom.option.displayStats.line"
+msgstr "Use line type of the chart for usage statistics display."
+
+msgid "plugins.themes.custom.displayStats.monthInitials"
+msgstr "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+
+msgid "plugins.themes.custom.displayStats.downloads"
+msgstr "Downloads"
+
+msgid "plugins.themes.custom.displayStats.noStats"
+msgstr "Download data is not yet available."
+
+msgid "plugins.themes.custom.nextSlide"
+msgstr "Next slide"
+
+msgid "plugins.themes.custom.prevSlide"
+msgstr "Previous slide"
+
+msgid "plugins.themes.custom.nav.openMenu"
+msgstr "Open Menu"
+
+msgid "plugins.themes.custom.topbar.metaLabel"
+msgstr "Journal information"
+
+msgid "plugins.themes.custom.topbar.makeSubmission"
+msgstr "Make a Submission"
+
+msgid "plugins.themes.custom.topbar.peerReviewed"
+msgstr "Peer Reviewed"
+
+msgid "plugins.themes.custom.topbar.issnOnline"
+msgstr "eISSN"
+
+msgid "plugins.themes.custom.topbar.issnPrint"
+msgstr "pISSN"
+
+msgid "plugins.themes.custom.homepage.browseCurrentIssue"
+msgstr "Browse Current Issue"
+
+msgid "plugins.themes.custom.homepage.featuredArticle"
+msgstr "Featured Article"
+
+msgid "plugins.themes.custom.homepage.readArticle"
+msgstr "Read article"
+
+msgid "plugins.themes.custom.homepage.stats.articles"
+msgstr "Articles Published"
+
+msgid "plugins.themes.custom.homepage.stats.indexing"
+msgstr "Indexing Databases"
+
+msgid "plugins.themes.custom.homepage.stats.reviewTime"
+msgstr "Review Time"
+
+msgid "plugins.themes.custom.homepage.stats.openAccessSince"
+msgstr "Open Access Since"
+
+msgid "plugins.themes.custom.homepage.statsReviewTimeDefault"
+msgstr "8–12 wk"
+
+msgid "plugins.themes.custom.homepage.currentIssueLead"
+msgstr "The latest research from our community of scholars and practitioners worldwide."
+
+msgid "plugins.themes.custom.homepage.viewFullIssue"
+msgstr "View Full Issue"
+
+msgid "plugins.themes.custom.homepage.subjectAreas"
+msgstr "Subject Areas"
+
+msgid "plugins.themes.custom.homepage.subjectAreasLead"
+msgstr "Disciplinary sections where practice meets modern scientific inquiry."
+
+msgid "plugins.themes.custom.homepage.indexedIn"
+msgstr "Indexed In"
+
+msgid "plugins.themes.custom.homepage.indexedInLead"
+msgstr "Articles are discoverable across leading academic databases."
+
+msgid "plugins.themes.custom.homepage.recentlyPublished"
+msgstr "Recently Published"
+
+msgid "plugins.themes.custom.homepage.recentlyPublishedLead"
+msgstr "Selected articles from across {$numIssues} published volumes."
+
+msgid "plugins.themes.custom.homepage.whyPublish"
+msgstr "Why Publish With {$journalName}"
+
+msgid "plugins.themes.custom.homepage.why.global.title"
+msgstr "Bilingual & Global Reach"
+
+msgid "plugins.themes.custom.homepage.why.global.text"
+msgstr "Published in {$numLocales} languages, open access, and indexed in {$numIndexed}+ databases. Your work reaches scholars worldwide from day one."
+
+msgid "plugins.themes.custom.homepage.why.review.title"
+msgstr "Rigorous Peer Review"
+
+msgid "plugins.themes.custom.homepage.why.review.text"
+msgstr "Double-blind peer review by international experts. Typical decision in {$reviewTime} with constructive editorial feedback."
+
+msgid "plugins.themes.custom.homepage.why.doi.title"
+msgstr "DOI for Every Article"
+
+msgid "plugins.themes.custom.homepage.why.doi.text"
+msgstr "Permanent Crossref DOIs (prefix {$doiPrefix}), preserved citations, and discoverability across major scholarly databases."
+
+msgid "plugins.themes.custom.homepage.why.doi.textGeneric"
+msgstr "Permanent DOIs, preserved citations, and discoverability across major scholarly databases."
+
+msgid "plugins.themes.custom.homepage.meetEditorialTeam"
+msgstr "Meet the Full Editorial Team"
+
+msgid "plugins.themes.custom.homepage.announcementsLead"
+msgstr "Calls for special issues, deadlines, and journal news."
+
+msgid "plugins.themes.custom.homepage.cta.title"
+msgstr "Ready to share your research?"
+
+msgid "plugins.themes.custom.homepage.cta.text"
+msgstr "Submit your manuscript and join scholars advancing the field."
+
+msgid "plugins.themes.custom.homepage.cta.button"
+msgstr "Register & Submit"
+
+msgid "plugins.themes.custom.homepage.eyebrow.bilingual"
+msgstr "Bilingual"
+
+msgid "plugins.themes.custom.option.homepageStatsReviewTime.label"
+msgstr "Homepage review time stat"
+
+msgid "plugins.themes.custom.option.homepageStatsReviewTime.description"
+msgstr "Displayed in the homepage stats bar (e.g. 8–12 wk)."
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.label"
+msgstr "Indexed databases"
+
+msgid "plugins.themes.custom.option.homepageIndexedDatabases.description"
+msgstr "One database name per line. Shown in the Indexed In section on the homepage."
+
+msgid "plugins.themes.custom.option.homepageRecentArticlesCount.label"
+msgstr "Recent articles on homepage"
+
+msgid "plugins.themes.custom.option.homepageRecentArticlesCount.description"
+msgstr "Number of recently published articles to display (1–12)."
+
+msgid "plugins.themes.custom.option.homepageMastheadLimit.label"
+msgstr "Editorial team preview count"
+
+msgid "plugins.themes.custom.option.homepageMastheadLimit.description"
+msgstr "Maximum number of editorial team members shown on the homepage."
+
+msgid "plugins.themes.custom.issue.published"
+msgstr "Published {$date}"
+
+msgid "plugins.themes.custom.issue.articleCount"
+msgstr "{$numArticles} articles"
+
+msgid "plugins.themes.custom.issue.pageRange"
+msgstr "pp. {$pages}"
+
+msgid "plugins.themes.custom.issue.pagesPrefix"
+msgstr "pp. {$pages}"
+
+msgid "plugins.themes.custom.issue.downloadFullIssue"
+msgstr "Download Full Issue ({$label})"
+
+msgid "plugins.themes.custom.issue.citeThisIssue"
+msgstr "Cite this Issue"
+
+msgid "plugins.themes.custom.issue.navigateIssues"
+msgstr "Navigate Issues"
+
+msgid "plugins.themes.custom.issue.previousIssue"
+msgstr "← Previous Issue ({$identification})"
+
+msgid "plugins.themes.custom.issue.nextIssue"
+msgstr "Next Issue ({$identification}) →"
+
+msgid "plugins.themes.custom.issue.viewAllArchives"
+msgstr "View All Archives"
+
+msgid "plugins.themes.custom.archive.lead"
+msgstr "Browse all published issues of {$journalName}."
+
+msgid "plugins.themes.custom.archive.filterByYear"
+msgstr "Filter by year"
+
+msgid "plugins.themes.custom.archive.allYears"
+msgstr "All years"
+
+msgid "plugins.themes.custom.archive.searchPlaceholder"
+msgstr "Search issues..."
+
+msgid "plugins.themes.custom.archive.articleCount"
+msgstr "{$numArticles} articles"
+
+msgid "plugins.themes.custom.archive.noResults"
+msgstr "No issues match your search on this page."
+
+msgid "plugins.themes.custom.archive.noIssuesForYear"
+msgstr "No issues were published in this year."
+
+msgid "plugins.themes.custom.article.correspondingAuthor"
+msgstr "Corresponding Author"
+
+msgid "plugins.themes.custom.article.aboutThisArticle"
+msgstr "About This Article"

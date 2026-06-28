@@ -1,0 +1,263 @@
+/**
+ * @file plugins/themes/custom/styles/pages/issueArchive.less
+ *
+ * JAVS-style issue archive — hero, filters, card grid, sidebar (matches issue/index).
+ */
+
+// ── Page shell ────────────────────────────────────────────────────────────────
+
+body.pkp_page_issue.pkp_op_archive {
+	background: @bg-cream;
+}
+
+.pkp_page_issue.pkp_op_archive {
+
+	.pkp_structure_content {
+		max-width: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		display: block;
+		background: @bg-cream;
+	}
+
+	.pkp_structure_main {
+		padding: 0;
+		max-width: none;
+		width: 100%;
+		background: @bg-cream;
+	}
+
+	.pkp_structure_sidebar {
+		display: none !important;
+	}
+}
+
+.javs_archive {
+	width: 100%;
+	background: @bg-cream;
+}
+
+.javs_archive_container {
+	max-width: @page-container;
+	margin: 0 auto;
+	padding: 0 @page-gutter;
+	box-sizing: border-box;
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+
+.javs_archive_hero {
+	background: linear-gradient(135deg, @bg-base 0%, @bg-base-light 100%);
+	color: #fff;
+	padding: 50px 0;
+
+	h1 {
+		color: #fff;
+		font-family: @font-heading;
+		font-size: clamp(32px, 3.5vw, 42px);
+		margin: 0 0 8px;
+	}
+
+	p {
+		margin: 0;
+		opacity: .92;
+		font-size: 17px;
+		max-width: 620px;
+		line-height: 1.6;
+	}
+}
+
+// ── Year filter (scrolls with page content; server-side via GET) ─────────────
+
+.javs_archive_year_filter {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 32px;
+	font-family: @font;
+	font-size: 14px;
+
+	label {
+		font-weight: @bold;
+		color: @text;
+		margin: 0;
+	}
+
+	select {
+		min-width: 160px;
+		max-width: 100%;
+		padding: 8px 12px;
+		border: 1px solid @bg-border-color;
+		border-radius: @radius;
+		background: #fff;
+		color: @text;
+		font-family: @font;
+		font-size: 14px;
+		cursor: pointer;
+
+		&:focus {
+			outline: 2px solid fade(@bg-base, 35%);
+			border-color: @bg-base;
+		}
+	}
+}
+
+// ── Main section ──────────────────────────────────────────────────────────────
+
+.javs_archive_section {
+	padding: 60px 0;
+	background: @bg-cream;
+}
+
+.javs_archive_empty {
+	color: @text-light;
+	font-size: 17px;
+	margin: 0 0 @double;
+}
+
+// ── Issue card grid ───────────────────────────────────────────────────────────
+
+.javs_archive_issues {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 30px;
+
+	@media (max-width: @screen-desktop) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 24px;
+	}
+
+	@media (max-width: @screen-phone) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.javs_archive_card {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, .06);
+
+		.javs_archive_card__body h3 {
+			color: @bg-base;
+		}
+	}
+
+	&__cover {
+		aspect-ratio: 4 / 3;
+		background: linear-gradient(160deg, @bg-base 0%, @bg-base-light 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: @font-heading;
+		font-size: 22px;
+		text-align: center;
+		padding: 16px;
+		box-sizing: border-box;
+
+		&--photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+
+	&__cover_label {
+		line-height: 1.25;
+		font-weight: @bold;
+	}
+
+	&__body {
+		padding: 20px;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__vol {
+		font-size: 12px;
+		letter-spacing: .12em;
+		color: @accent-wheat;
+		text-transform: uppercase;
+		font-weight: @bold;
+	}
+
+	h3 {
+		font-family: @font-heading;
+		font-size: 18px;
+		margin: 8px 0 0;
+		line-height: 1.35;
+		color: @text;
+		transition: color 200ms ease;
+	}
+}
+
+.javs_archive_card__meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	font-size: 13px;
+	color: @text-light;
+	margin-top: auto;
+	padding-top: 10px;
+}
+
+// ── Pagination ────────────────────────────────────────────────────────────────
+
+.javs_archive_pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	margin-top: 50px;
+	flex-wrap: wrap;
+
+	&__link {
+		padding: 8px 14px;
+		border-radius: 6px;
+		color: @bg-base;
+		font-weight: @bold;
+		font-size: 14px;
+		text-decoration: none;
+		border: 1px solid @bg-border-color;
+		background: #fff;
+
+		&:hover {
+			background: @bg-cream;
+			border-color: @bg-base;
+		}
+	}
+
+	&__current {
+		padding: 8px 14px;
+		border-radius: 6px;
+		background: @bg-base;
+		color: #fff;
+		font-weight: @bold;
+		font-size: 14px;
+	}
+}
+
+// Archive + sidebar: reuse issue grid (1200px total)
+.javs_archive .javs_issue_with_sidebar {
+	.javs_issue_sidebar {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}

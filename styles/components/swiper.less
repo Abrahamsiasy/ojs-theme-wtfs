@@ -1,0 +1,88 @@
+// Swiper.js
+.highlights {
+    margin-top: @double;
+    background: @bg-shade;
+    border-radius: @radius;
+    overflow: hidden;
+}
+
+.swiper {
+    --swiper-theme-color: @bg-base;
+    --swiper-navigation-size: @triple;
+    --swiper-navigation-sides-offset: @half;
+}
+
+.swiper-wrapper {
+    margin: 0;
+    padding: 0 0 @quadruple;
+    list-style: none;
+}
+
+.swiper-slide-content {
+    padding-left: @triple;
+    padding-right: @triple;
+}
+
+// Extra class to override .pkp_structure_main h3
+.swiper .swiper-slide-title {
+    margin-top: @double;
+}
+
+.swiper-slide-button {
+    display: inline-block;
+    margin-top: @double;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    background: transparent;
+    border: none;
+    color: @lift;
+
+    &:focus-visible {
+        outline: 2px solid @lift;
+        outline-offset: @half;
+    }
+}
+
+.swiper-slide-image {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+}
+
+@media (min-width: @screen-phone) {
+
+    .highlights {
+        margin-top: @double;
+    }
+
+    .swiper-slide-content {
+        padding-left: @quadruple;
+        padding-right: @quadruple;
+    }
+}
+
+@media (min-width: @screen-tablet) {
+
+    .highlights {
+        margin-top: @double;
+    }
+
+    // Extra class to override library styles
+    .swiper-slide.-has-image {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .swiper-slide-content {
+        padding-inline-start: @triple;
+    }
+}
+
+@media (min-width: @screen-desktop) {
+
+    .highlights {
+        margin-top: @triple;
+    }
+}

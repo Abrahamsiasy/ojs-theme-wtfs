@@ -1,0 +1,163 @@
+/**
+ * @file styles/pages/register.less
+ *
+ * @link lib/pkp/templates/frontend/pages/userRegister.tpl
+ */
+@import "../components/wtsf-form-inputs.less";
+
+body.pkp_page_user.pkp_op_register,
+.pkp_op_register {
+	background: @bg-cream;
+}
+
+.page_register {
+
+	.cmp_form.register {
+		max-width: 460px;
+	}
+
+	.required_label {
+		font-size: 13px;
+		line-height: 1.5;
+		color: @text-light;
+		margin-bottom: @double;
+	}
+
+	.consent {
+		margin-bottom: 0;
+	}
+
+	.fields .reviewer_interests {
+		max-height: 0;
+		padding-bottom: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: all 0.3s;
+
+		&.is_visible {
+			max-height: 400px;
+			overflow: visible;
+			padding-bottom: @triple;
+			opacity: 1;
+		}
+	}
+
+	.context_optin {
+
+		.contexts {
+			&:extend(.pkp_unstyled_list);
+
+			> li {
+				margin-bottom: 1em;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.roles {
+			padding: @half 0;
+			margin-bottom: 0;
+
+			legend {
+				&:extend(.pkp_screen_reader);
+			}
+		}
+
+		.context_privacy {
+			position: absolute;
+			left: -9999px;
+			padding: @half 0;
+			font-size: @font-sml;
+			line-height: @line-sml;
+		}
+
+		.context_privacy_visible {
+			position: relative;
+			left: auto;
+		}
+	}
+
+	#formErrors {
+		margin: @double 0;
+		padding: @base;
+		background: @no;
+		color: #fff;
+		border-radius: @radius;
+
+		.pkp_form_error {
+			padding: 0;
+			font-size: @font-sml;
+			font-weight: @bold;
+			line-height: @line-sml;
+		}
+
+		.pkp_form_error_list {
+			margin: 0;
+			padding-left: @double;
+			font-size: @font-sml;
+			line-height: @line-sml;
+
+			a {
+				color: #fff;
+			}
+		}
+	}
+
+	.buttons {
+		margin-top: @double;
+
+		button {
+			padding: 12px 22px;
+			font-size: 15px;
+		}
+
+		a {
+			margin-left: @base;
+			font-size: @font-sml;
+		}
+	}
+
+	// Keep all registration fields stacked vertically
+	.identity .fields > div,
+	fieldset.login .fields > div,
+	.fields > div {
+		display: block;
+		width: 100%;
+		max-width: none;
+		padding-right: 0;
+	}
+}
+
+.pkp_op_register {
+
+	.ui-helper-hidden-accessible {
+		clip: rect(1px, 1px, 1px, 1px);
+		position: absolute !important;
+		left: -2000px;
+
+		&:focus {
+			background-color: #fff;
+			border-radius: 3px;
+			box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+			clip: auto !important;
+			color: #000;
+			display: block;
+			font-size: @font-base;
+			height: auto;
+			line-height: normal;
+			padding: @base;
+			position: absolute;
+			left: @half;
+			top: @half;
+			text-decoration: none;
+			width: auto;
+			z-index: 100000;
+		}
+	}
+
+	.ui-autocomplete {
+		position: absolute !important;
+	}
+}

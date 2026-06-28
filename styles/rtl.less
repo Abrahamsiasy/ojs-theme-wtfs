@@ -1,0 +1,198 @@
+/**
+ * @file plugins/themes/default/rtl.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief Stylesheet for flipping content to RTL (e.g. for Arabic, Persian and Hebrew)
+ *
+ */
+
+body[dir="rtl"] {
+	direction: rtl;
+	unicode-bidi: embed;
+
+	// Layout (flex content column from body.less)
+	@media (min-width: @screen-desktop) {
+
+		.pkp_structure_main {
+			order: 2;
+		}
+
+		.pkp_structure_sidebar {
+			order: 1;
+		}
+
+		.pkp_navigation_search_wrapper {
+			float: left;
+			text-align: left;
+		}
+	}
+
+	// Header (WTSF layout)
+	.javs_topbar_links .pkp_navigation_user > li > ul {
+		right: auto;
+		left: 0;
+	}
+
+	.javs_topbar_links > a,
+	.javs_topbar_links .pkp_navigation_user a {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	@media (max-width: 980px) {
+		.javs_topbar_links > a,
+		.javs_topbar_links .pkp_navigation_user a {
+			margin-right: 14px;
+			margin-left: 0;
+		}
+	}
+
+	.pkp_site_nav_toggle {
+		right: auto;
+		left: 0;
+	}
+
+	.pkp_site_name {
+		padding-right: 0;
+		padding-left: 48px;
+	}
+
+	@media (min-width: 981px) {
+		.pkp_site_name {
+			text-align: right;
+		}
+	}
+
+	// Utils
+	.pkp_screen_reader,
+	.cmp_skip_to_content a,
+	.pkp_page_index .journals h2,
+	.pkp_page_index .cmp_announcements h2,
+	.page_register .context_optin .roles legend {
+		left: auto;
+		right: -2000px;
+
+		&:focus {
+			right: 50%;
+		}
+	}
+
+	// Announcement summary
+	.obj_announcement_summary {
+
+		.date:before {
+			margin-right: 0;
+			margin-left: 0.5em;
+		}
+	}
+
+	// Issue table of contents
+	.obj_issue_toc {
+
+		.galleys_links li {
+			margin-right: inherit;
+			margin-left: 1em;
+		}
+
+		@media(min-width: @screen-tablet) {
+
+			.galleys h2,
+			.section h2 {
+				left: auto;
+				right: @triple / 2;
+			}
+
+			.cover {
+				float: right;
+				margin-right: inherit;
+				margin-left: @double;
+			}
+		}
+
+		@media(min-width: @screen-desktop) {
+
+			.cover {
+				margin-right: inherit;
+				margin-left: @triple;
+			}
+		}
+	}
+
+	// Issue summary
+	.obj_issue_summary {
+
+		@media(min-width: @screen-tablet) {
+
+			.cover {
+				float: right;
+				margin-right: inherit;
+				margin-left: @double;
+			}
+		}
+	}
+
+	// Article summary
+	.obj_article_summary {
+
+		@media(min-width: @screen-tablet) {
+			padding-right: 0;
+			padding-left: 5em;
+		}
+	}
+
+	@media(min-width: @screen-tablet) {
+
+		.galleys h2,
+		.section h2 {
+			left: auto;
+			right: @triple / 2;
+		}
+
+		.cover {
+			float: right;
+			margin-right: inherit;
+			margin-left: @double;
+		}
+	}
+
+	@media(min-width: @screen-desktop) {
+
+		.cover {
+			margin-right: inherit;
+			margin-left: @triple;
+		}
+	}
+
+	// Homepage cream zone + sidebar
+	.javs_home_with_sidebar {
+		@media (min-width: @screen-desktop) {
+			grid-template-columns: @sidebar-width minmax(0, 1fr);
+
+			&__main {
+				order: 2;
+			}
+
+			&__sidebar {
+				order: 1;
+			}
+		}
+	}
+
+	// Issue page main + sidebar
+	.javs_issue_with_sidebar {
+		@media (min-width: @screen-desktop) {
+			grid-template-columns: @sidebar-width minmax(0, 1fr);
+
+			.javs_issue_with_sidebar__main {
+				order: 2;
+			}
+
+			.javs_issue_sidebar {
+				order: 1;
+			}
+		}
+	}
+}

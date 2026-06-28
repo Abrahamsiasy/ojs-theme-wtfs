@@ -1,0 +1,123 @@
+/**
+ * @file plugins/themes/custom/styles/main.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief JAVS main content panel styles — headings, paragraphs, layout.
+ */
+
+.pkp_structure_main {
+
+	h1 {
+		font-family: @font-heading;
+		font-size: @font-header;
+		line-height: @line-header;
+		font-weight: @bold;
+		color: @text;
+	}
+
+	h2 {
+		font-family: @font-heading;
+		font-size: @font-lead;
+		line-height: @line-lead;
+		font-weight: @bold;
+		color: @text;
+	}
+
+	h3 {
+		font-family: @font-heading;
+		font-size: @font-bump;
+		line-height: @line-bump;
+		font-weight: @bold;
+		color: @text;
+	}
+
+	h4 {
+		font-family: @font;
+		font-size: @font-base;
+		line-height: @line-base;
+		font-weight: @bold;
+		color: @text;
+	}
+
+	h5 {
+		font-family: @font;
+		font-size: @font-base;
+		line-height: @line-base;
+		font-weight: @normal;
+		color: @text;
+	}
+
+	h6 {
+		font-family: @font;
+		font-size: @font-sml;
+		line-height: @line-sml;
+		font-weight: @bold;
+		color: @text;
+	}
+
+	h1, h2, h3, h4 {
+		margin: @quadruple 0 @double;
+	}
+
+	h5, h6 {
+		margin: @double 0;
+	}
+
+	p, ul {
+		line-height: @line-base-large;
+		margin: @line-base 0;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+
+	.page {
+
+		h1 {
+			margin-top: 0;
+		}
+
+		> .cmp_edit_link {
+			float: right;
+			padding: @half 0;
+			line-height: @triple;
+		}
+
+		.monograph_count {
+			float: right;
+			padding: @base 0;
+			font-size: @font-sml;
+			color: @text-light;
+		}
+
+		.about_section {
+			.pkp_helpers_clear;
+			color: @text-light;
+			line-height: @triple;
+
+			.cover {
+				float: right;
+				width: 20%;
+				margin-left: 10%;
+				margin-right: 10%;
+
+				img {
+					display: block;
+					margin: 0 auto;
+				}
+			}
+
+			.description p:first-child { margin-top: 0; }
+			.description p:last-child  { margin-bottom: 0; }
+
+			@media (min-width: @screen-phone) {
+				font-size: @font-bump;
+				font-style: italic;
+			}
+		}
+	}
+}

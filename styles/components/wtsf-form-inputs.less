@@ -1,0 +1,115 @@
+/**
+ * WTSF-style form inputs for OJS login/register (dynamic cmp_form markup).
+ */
+
+.page_login,
+.page_register {
+
+	.cmp_form {
+
+		label > .label {
+			display: block;
+			font-size: 13px;
+			font-weight: @bold;
+			color: @text;
+			margin-bottom: 6px;
+
+			.required {
+				color: @bg-base;
+				font-weight: @bold;
+			}
+		}
+
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		input[type="url"],
+		input[type="tel"],
+		select,
+		textarea {
+			padding: 10px 12px;
+			width: 100%;
+			height: auto;
+			min-height: 42px;
+			background: #fff;
+			border: 1px solid @bg-border-color;
+			border-radius: 5px;
+			font-family: @font;
+			font-size: 15px;
+			line-height: 1.4;
+			color: @text;
+			box-sizing: border-box;
+			transition: border-color 200ms ease, box-shadow 200ms ease;
+
+			&:focus {
+				outline: 0;
+				border-color: @bg-base;
+				box-shadow: 0 0 0 3px fade(@bg-base, 10%);
+			}
+		}
+
+		textarea {
+			min-height: 120px;
+			resize: vertical;
+			line-height: 1.5;
+		}
+
+		select {
+			cursor: pointer;
+		}
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			width: auto;
+			min-height: auto;
+			height: auto;
+			padding: 0;
+			accent-color: @bg-base;
+			flex-shrink: 0;
+			margin-top: 3px;
+		}
+
+		.remember label,
+		.optin label,
+		.checkbox label,
+		.context_optin .roles label {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 10px;
+			font-size: 14px;
+			line-height: 1.5;
+			cursor: pointer;
+
+			.label,
+			> span:not(.label) {
+				display: inline;
+				font-size: 14px;
+				font-weight: @normal;
+				margin-bottom: 0;
+			}
+		}
+
+		.password label a {
+			align-self: flex-end;
+			margin-top: 4px;
+			font-size: 12px;
+			font-style: normal;
+			color: @bg-base;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		.fields > div {
+			padding-bottom: 14px;
+		}
+	}
+}

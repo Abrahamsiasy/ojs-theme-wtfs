@@ -1,0 +1,107 @@
+/**
+ * @file styles/objects/issue_summary.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief JAVS issue summary card — archive grid.
+ */
+
+.obj_issue_summary {
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 28px rgba(0,0,0,.07);
+	}
+
+	h2 {
+		margin: 0;
+		font-size: @font-bump;
+		line-height: @line-bump;
+		font-weight: @bold;
+	}
+
+	// Cover image or placeholder gradient
+	.cover {
+		display: block;
+		margin-bottom: 0;
+		aspect-ratio: 4/3;
+		background: linear-gradient(160deg, @bg-base 0%, @bg-base-light 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: @font-heading;
+		font-size: 22px;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			max-height: none;
+		}
+	}
+
+	.body {
+		padding: @double;
+	}
+
+	.vol {
+		font-size: 11px;
+		letter-spacing: .12em;
+		color: @accent-wheat;
+		text-transform: uppercase;
+		font-weight: @bold;
+		margin-bottom: @half;
+		display: block;
+	}
+
+	.title {
+		font-family: @font-heading;
+		font-size: @font-bump;
+		font-weight: @bold;
+		text-decoration: none;
+		color: @text;
+		display: block;
+		margin-bottom: @base;
+		line-height: 1.3;
+
+		&:hover { color: @bg-base; }
+	}
+
+	.series {
+		margin-bottom: @half;
+		color: @text-light;
+		font-size: @font-sml;
+	}
+
+	.description {
+		font-size: @font-sml;
+		line-height: @line-base;
+		color: @text-light;
+
+		p:first-child { margin-top: 0; }
+		p:last-child  { margin-bottom: 0; }
+	}
+
+	.meta {
+		display: flex;
+		justify-content: space-between;
+		font-size: 12px;
+		color: @text-light;
+		margin-top: @base;
+		padding-top: @base;
+		border-top: 1px solid @bg-border-color;
+	}
+
+	@media (min-width: @screen-tablet) {
+		// Grid variant: keep card layout (no float)
+	}
+}

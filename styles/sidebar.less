@@ -1,0 +1,138 @@
+/**
+ * @file plugins/themes/custom/styles/sidebar.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief JAVS sidebar block card styling — content from admin/plugins only.
+ */
+
+.pkp_block {
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	padding: @double;
+	margin-bottom: @double;
+	font-size: @font-base;
+	line-height: @line-base;
+
+	.title {
+		display: block;
+		margin-bottom: @base;
+		margin-top: 0;
+		font-family: @font;
+		font-size: 11px;
+		font-weight: @bold;
+		line-height: @line-sml;
+		color: @bg-base;
+		text-transform: uppercase;
+		letter-spacing: .08em;
+	}
+
+	.content {
+
+		ul {
+			&:extend(.pkp_unstyled_list);
+
+			li {
+				line-height: @line-base;
+				padding: @half 0;
+				border-bottom: 1px solid @bg-border-color;
+
+				&:last-child { border-bottom: none; }
+			}
+		}
+
+		p {
+			line-height: @line-base-large;
+			font-size: @font-sml;
+			color: @text-light;
+
+			&:first-child { margin-top: 0; }
+			&:last-child  { margin-bottom: 0; }
+		}
+	}
+
+	a {
+		text-decoration: none;
+		color: @primary;
+		font-size: @font-sml;
+
+		&:hover,
+		&:focus {
+			color: @primary-lift;
+			text-decoration: underline;
+		}
+	}
+
+	@media (min-width: @screen-desktop) {
+		padding: @double;
+	}
+}
+
+// Browse block
+.block_browse {
+	font-size: @font-sml;
+
+	.has_submenu {
+		margin-top: @double;
+		font-size: @font-sml;
+		font-weight: @bold;
+		color: @text-light;
+
+		ul {
+			margin-top: calc(~"@{half} - 1px");
+			padding-top: @half;
+			font-weight: @normal;
+		}
+	}
+
+	.is_sub { margin-left: @base; }
+
+	.current a {
+		padding-left: 0.5em;
+		border-left: 3px solid @bg-base;
+		color: @bg-base;
+		cursor: text;
+	}
+}
+
+.block_information,
+.block_language_toggle {
+
+	a { font-size: @font-sml; }
+}
+
+.block_make_submission {
+
+	a {
+		&:extend(.cmp_button);
+		background: @bg-base;
+		color: #fff;
+		border-color: @bg-base;
+		border-radius: @radius;
+		display: block;
+		text-align: center;
+		font-weight: @bold;
+		padding: @base @double;
+		font-size: @font-sml;
+
+		&:hover,
+		&:focus {
+			background: @bg-base-light;
+			color: #fff;
+			border-color: @bg-base-light;
+		}
+	}
+}
+
+.block_subscription {
+
+	.subscription_name {
+		margin-bottom: 0;
+		font-weight: @bold;
+	}
+
+	.subscription_membership { margin-top: 0; }
+}

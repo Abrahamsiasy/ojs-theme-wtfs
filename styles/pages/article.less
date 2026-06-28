@@ -1,0 +1,763 @@
+/**
+ * @file plugins/themes/custom/styles/pages/article.less
+ *
+ * WTSF-style article view — breadcrumb, cream header, two-column body + sidebar.
+ */
+
+// ── Page shell ────────────────────────────────────────────────────────────────
+
+body.pkp_page_article {
+	background: @bg-cream;
+}
+
+.pkp_page_article.pkp_op_view {
+
+	.pkp_structure_content {
+		max-width: none;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		display: block;
+		background: @bg-cream;
+	}
+
+	.pkp_structure_main {
+		padding: 0;
+		max-width: none;
+		width: 100%;
+		background: @bg-cream;
+	}
+
+	.pkp_structure_sidebar {
+		display: none !important;
+	}
+}
+
+.javs_article_page {
+	width: 100%;
+	background: @bg-cream;
+}
+
+.javs_article_container {
+	max-width: @page-container;
+	margin: 0 auto;
+	padding: 0 @page-gutter;
+	box-sizing: border-box;
+}
+
+// ── Breadcrumb ─────────────────────────────────────────────────────────────────
+
+.javs_breadcrumb {
+	padding: 18px 0;
+	font-size: 13px;
+	color: @text-light;
+	border-bottom: 1px solid @bg-border-color;
+	background: #fff;
+
+	a {
+		color: @text-light;
+		text-decoration: none;
+
+		&:hover {
+			color: @bg-base;
+		}
+	}
+
+	&__sep {
+		margin: 0 8px;
+		color: @text-light;
+	}
+
+	&__current {
+		color: @text;
+	}
+}
+
+// ── Header band ───────────────────────────────────────────────────────────────
+
+.javs_article_header {
+	background: @bg-cream;
+	padding: 54px 0 40px;
+}
+
+.javs_tag--type {
+	display: inline-block;
+	margin-bottom: 18px;
+	font-size: 12px;
+	font-weight: @bold;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: @bg-base;
+	background: fade(@bg-base, 8%);
+	border: 1px solid fade(@bg-base, 25%);
+	padding: 5px 12px;
+	border-radius: 999px;
+}
+
+.javs_article_title {
+	margin: 0 0 22px;
+	font-family: @font-heading;
+	font-size: clamp(28px, 3.6vw, 42px);
+	line-height: 1.2;
+	color: @text;
+	max-width: 900px;
+	font-weight: @bold;
+}
+
+.javs_article_subtitle {
+	margin: -12px 0 22px;
+	font-size: @font-lead;
+	line-height: @line-lead;
+	color: @text-light;
+	max-width: 900px;
+}
+
+.javs_article_authors_line {
+	font-size: 17px;
+	margin-bottom: 10px;
+	line-height: 1.5;
+}
+
+.javs_article_author {
+	font-weight: @bold;
+	color: @text;
+}
+
+.javs_article_authors_sep {
+	margin: 0 6px;
+	color: @text-light;
+	font-weight: @normal;
+}
+
+.javs_article_affiliations {
+	font-size: 14px;
+	color: @text-light;
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+.javs_article_affiliation {
+	margin-bottom: 4px;
+
+	sup {
+		margin-right: 4px;
+		color: @bg-base;
+		font-weight: @bold;
+	}
+}
+
+.javs_article_doi {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 13px;
+	color: @text;
+	margin-bottom: 24px;
+	display: inline-flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	background: #fff;
+	padding: 6px 12px;
+	border-radius: @radius;
+	border: 1px solid @bg-border-color;
+
+	&__label {
+		font-family: @font;
+		font-weight: @bold;
+	}
+
+	&__link {
+		color: @text;
+		text-decoration: none;
+
+		&:hover {
+			color: @bg-base;
+		}
+	}
+
+	&__copy {
+		background: transparent;
+		border: 0;
+		cursor: pointer;
+		color: @bg-base;
+		display: flex;
+		align-items: center;
+		padding: 0;
+
+		&:hover {
+			opacity: .75;
+		}
+	}
+}
+
+.javs_article_actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 24px;
+
+	.obj_galley_link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		padding: 12px 22px;
+		border-radius: @radius;
+		font-family: @font;
+		font-weight: @bold;
+		font-size: 15px;
+		line-height: 1.2;
+		text-decoration: none;
+		border: 2px solid @bg-base;
+		background: transparent;
+		color: @bg-base !important;
+		transition: background 200ms ease, color 200ms ease;
+
+		&:before {
+			margin-right: 0;
+		}
+
+		&:hover {
+			background: @bg-base;
+			color: #fff !important;
+		}
+
+		&:first-child {
+			background: @bg-base;
+			color: #fff !important;
+
+			&:hover {
+				background: @bg-base-light;
+				border-color: @bg-base-light;
+			}
+		}
+	}
+}
+
+.javs_article_meta_strip {
+	border-top: 1px solid fade(@accent-wheat, 45%);
+	padding-top: 14px;
+	display: flex;
+	gap: 30px;
+	flex-wrap: wrap;
+	font-size: 13px;
+	color: @text-light;
+
+	strong {
+		color: @text;
+	}
+
+	a {
+		color: @bg-base;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// ── Body layout ───────────────────────────────────────────────────────────────
+
+.javs_article_section {
+	background: #fff;
+}
+
+.javs_article_with_sidebar {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) @sidebar-width;
+	gap: 60px;
+	width: 100%;
+	max-width: @page-container;
+	margin: 0 auto;
+	padding: 60px @page-gutter;
+	align-items: start;
+	box-sizing: border-box;
+
+	&__main {
+		min-width: 0;
+	}
+}
+
+.javs_article_body {
+	max-width: 760px;
+	font-family: @font-heading;
+	font-size: 18px;
+	line-height: 1.85;
+	color: @text;
+
+	h2 {
+		font-family: @font-heading;
+		font-size: 26px;
+		color: @bg-base;
+		margin: 36px 0 16px;
+		padding-bottom: 6px;
+		border-bottom: 1px solid fade(@accent-wheat, 45%);
+	}
+
+	h3 {
+		font-size: 20px;
+		margin: 24px 0 10px;
+		color: @text;
+	}
+
+	p {
+		margin-bottom: 18px;
+	}
+}
+
+.javs_article_abstract {
+	background: @bg-cream;
+	border-left: 4px solid @bg-base;
+	padding: 24px 28px;
+	border-radius: 0 @radius @radius 0;
+	margin-bottom: 24px;
+
+	h2 {
+		color: @bg-base;
+		font-size: 20px;
+		margin: 0 0 10px;
+		border: 0;
+		padding: 0;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.javs_article_keywords {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-bottom: 36px;
+
+	span {
+		font-size: 13px;
+		font-family: @font;
+		border: 1px solid @bg-base;
+		color: @bg-base;
+		padding: 4px 12px;
+		border-radius: 999px;
+	}
+}
+
+.javs_article_panel {
+	margin-top: @triple;
+
+	h2 {
+		margin-top: 0;
+	}
+}
+
+.javs_article_bios {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.javs_article_bio {
+	margin-bottom: @double;
+
+	&__name {
+		font-weight: @bold;
+		font-family: @font;
+		font-size: 15px;
+		margin-bottom: @half;
+	}
+
+	&__text {
+		font-size: 16px;
+		line-height: 1.7;
+	}
+}
+
+.javs_article_references {
+	margin-top: 50px;
+	border-top: 2px solid fade(@accent-wheat, 45%);
+	padding-top: 24px;
+
+	h2 {
+		margin-top: 0;
+	}
+
+	ol {
+		padding-left: 24px;
+		font-size: 15px;
+		line-height: 1.7;
+		font-family: @font;
+	}
+
+	li {
+		margin-bottom: 12px;
+	}
+
+	&__raw {
+		font-size: 15px;
+		line-height: 1.7;
+		font-family: @font;
+	}
+}
+
+// Plugin output in main column (Similar Articles, Recommend by Author, etc.)
+.javs_article_plugins {
+	margin-top: 50px;
+	border-top: 2px solid fade(@accent-wheat, 45%);
+	padding-top: 24px;
+	font-family: @font;
+
+	> section {
+		margin-bottom: @triple;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	h2,
+	.label {
+		font-family: @font-heading;
+		font-size: 26px;
+		color: @bg-base;
+		margin: 0 0 16px;
+		padding-bottom: 6px;
+		border-bottom: 1px solid fade(@accent-wheat, 45%);
+		font-weight: @bold;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		padding: 12px 0;
+		border-bottom: 1px solid @bg-border-color;
+		font-size: 15px;
+		line-height: 1.6;
+		color: @text;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		a {
+			color: @bg-base;
+			text-decoration: none;
+			font-weight: @bold;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	#articlesBySimilarityPages,
+	#articlesBySameAuthorPages,
+	#articlesBySimilaritySearch {
+		margin-top: @base;
+		font-size: 14px;
+		color: @text-light;
+
+		a {
+			color: @bg-base;
+		}
+	}
+}
+
+// ── Sidebar ───────────────────────────────────────────────────────────────────
+
+.javs_article_sidebar {
+	position: sticky;
+	top: 88px;
+	align-self: start;
+	font-family: @font;
+	font-size: 14px;
+
+	.javs_issue_sidebar__blocks {
+		display: flex;
+		flex-direction: column;
+		gap: @double;
+		margin-top: @double;
+		padding-top: 0;
+	}
+
+	// Citation Style Language plugin (Templates::Article::Details hook)
+	> .item.citation {
+		background: #fff;
+		border: 1px solid @bg-border-color;
+		border-radius: 8px;
+		padding: 20px;
+		margin-bottom: 18px;
+
+		.citation_display .label {
+			display: block;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: .08em;
+			color: @bg-base;
+			font-family: @font;
+			margin: 0 0 12px;
+		}
+	}
+}
+
+.javs_article_sidebar__box {
+	background: #fff;
+	border: 1px solid @bg-border-color;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 18px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	h4 {
+		font-size: 13px;
+		text-transform: uppercase;
+		letter-spacing: .08em;
+		color: @bg-base;
+		font-family: @font;
+		margin: 0 0 12px;
+	}
+
+	// Citation Style Language plugin (Templates::Article::Details hook)
+	.item.citation {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+
+	.citation_display {
+		.label {
+			display: none;
+		}
+
+		.value {
+			font-size: 12px;
+			line-height: 1.5;
+		}
+
+		#citationOutput {
+			background: @bg-cream;
+			padding: 10px;
+			border-radius: @radius;
+			font-family: @font-heading;
+			font-size: 12px;
+			line-height: 1.5;
+			color: #3a3a44;
+			margin-bottom: 10px;
+		}
+
+		.citation_formats {
+			margin-top: 0;
+			border: 1px solid @bg-border-color;
+			border-radius: @radius;
+		}
+
+		.citation_formats_button {
+			width: 100%;
+			padding: 8px 12px;
+			font-size: 12px;
+			font-family: @font;
+			color: @text-light;
+			background: transparent;
+			border: 0;
+			text-align: left;
+			cursor: pointer;
+
+			&:hover,
+			&:focus {
+				background: @bg-cream;
+				outline: 0;
+			}
+		}
+
+		.citation_formats_styles {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			a {
+				display: block;
+				padding: 8px 12px;
+				border-top: 1px solid @bg-border-color;
+				font-size: 12px;
+				text-decoration: none;
+				color: @text;
+
+				&:hover {
+					background: @bg-cream;
+					color: @bg-base;
+				}
+			}
+		}
+	}
+}
+
+.javs_article_sidebar__cover_img {
+	width: 100%;
+	height: auto;
+	border-radius: @radius;
+	display: block;
+}
+
+.javs_article_sidebar__links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+	}
+
+	a,
+	.javs_article_sidebar__current {
+		display: block;
+		padding: 8px 0;
+		font-size: 14px;
+		color: @text;
+		border-bottom: 1px solid @bg-border-color;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: @bg-base;
+	}
+
+	li:last-child a,
+	li:last-child .javs_article_sidebar__current {
+		border-bottom: 0;
+	}
+
+	&--supp {
+		margin-top: 8px;
+		padding-top: 8px;
+		border-top: 1px solid @bg-border-color;
+	}
+}
+
+.javs_article_sidebar__meta {
+	margin: 0;
+
+	&_row {
+		margin-bottom: 10px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		dt {
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: .06em;
+			color: @text-light;
+			margin-bottom: 2px;
+		}
+
+		dd {
+			margin: 0;
+			font-size: 14px;
+			color: @text;
+
+			a {
+				color: @bg-base;
+				text-decoration: none;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.javs_article_sidebar__categories {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.javs_article_sidebar__value {
+	font-size: 13px;
+	line-height: 1.5;
+	color: @text;
+
+	a {
+		color: @bg-base;
+	}
+}
+
+.javs_article_sidebar__license {
+	font-size: 12px;
+	color: @text-light;
+}
+
+.javs_article_contact {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-top: 8px;
+
+	&__avatar {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, @bg-base, @accent-wheat);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-family: @font-heading;
+		font-weight: @bold;
+		flex-shrink: 0;
+		font-size: 14px;
+	}
+
+	&__name {
+		font-weight: @bold;
+		font-size: 14px;
+		color: @text;
+	}
+
+	&__orcid {
+		font-size: 12px;
+		margin-top: 4px;
+
+		a {
+			color: @bg-base;
+			text-decoration: none;
+		}
+	}
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+
+@media (max-width: @screen-desktop) {
+	.javs_article_with_sidebar {
+		grid-template-columns: 1fr;
+		gap: 40px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+
+	.javs_article_sidebar {
+		position: static;
+		border-top: 1px solid @bg-border-color;
+		padding-top: @double;
+	}
+}
+
+@media (max-width: @screen-tablet) {
+	.javs_article_header {
+		padding-top: 36px;
+		padding-bottom: 28px;
+	}
+
+	.javs_article_body {
+		font-size: 16px;
+	}
+}

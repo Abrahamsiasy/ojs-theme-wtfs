@@ -1,0 +1,68 @@
+/**
+ * @file plugins/themes/custom/styles/objects/announcement_summary.less
+ *
+ * Copyright (c) 2014-2021 Simon Fraser University
+ * Copyright (c) 2003-2021 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @brief JAVS announcement summary — wheat date accent, readable body.
+ */
+
+.obj_announcement_summary {
+
+	h2,
+	h3,
+	h4 {
+		margin: 0 0 @half;
+		font-size: @font-lead;
+		line-height: 1.3;
+
+		a {
+			text-decoration: none;
+			color: inherit;
+
+			&:hover { color: @bg-base; }
+		}
+	}
+
+	.date {
+		font-size: 12px;
+		font-weight: @bold;
+		letter-spacing: .06em;
+		line-height: @line-base;
+		color: @accent-wheat;
+		margin-bottom: @half;
+
+		&:before {
+			.fa();
+			content: @fa-var-calendar;
+			margin-right: 0.4em;
+			font-size: 11px;
+		}
+	}
+
+	.summary {
+		font-size: @font-sml;
+		line-height: @line-base-large;
+		margin-top: @half;
+		color: @text-light;
+
+		p:first-child { margin-top: 0; }
+		p:last-child  { margin-bottom: 0; }
+	}
+
+	.read_more {
+		.cmp_button_text(@fa-var-chevron-right);
+		margin-top: @base;
+		display: inline-block;
+	}
+}
+
+@media (min-width: @screen-tablet) {
+
+	.obj_announcement_summary_has_image {
+		display: grid;
+		grid-template-columns: 33% auto;
+		gap: @triple;
+	}
+}

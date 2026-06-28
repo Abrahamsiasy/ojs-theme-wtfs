@@ -1,0 +1,24 @@
+/**
+ * @file styles/objects/article_details.less
+ *
+ * @brief Article detail object — scoped overrides for WTSF layout in article.less.
+ */
+
+.obj_article_details.javs_article {
+
+	// Hide legacy OJS two-column float layout if any plugin injects it
+	> .page_title,
+	> .subtitle {
+		display: none;
+	}
+
+	.row,
+	.main_entry,
+	.entry_details {
+		display: none;
+	}
+
+	.cmp_notification {
+		margin-bottom: @double;
+	}
+}

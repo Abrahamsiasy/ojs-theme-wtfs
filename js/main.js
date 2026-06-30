@@ -319,12 +319,14 @@
 	$(window).on('resize', markActiveNavLinks);
 
 	// ── Issue cover: fall back to placeholder if cover image fails to load ─────
-	$('.javs_home_issue_cover--photo .javs_home_issue_cover__img').each(function() {
+	$('.javs_home_issue_cover--photo .javs_home_issue_cover__img, .javs_issue_cover--photo .javs_issue_cover__img').each(function() {
 		var $img = $(this);
+		var isHome = $img.hasClass('javs_home_issue_cover__img');
+		var coverClass = isHome ? 'javs_home_issue_cover' : 'javs_issue_cover';
 		$img.on('error', function() {
-			$img.closest('.javs_home_issue_cover')
-				.removeClass('javs_home_issue_cover--photo')
-				.addClass('javs_home_issue_cover--placeholder');
+			$img.closest('.' + coverClass)
+				.removeClass(coverClass + '--photo')
+				.addClass(coverClass + '--placeholder');
 			$img.remove();
 		});
 	});

@@ -558,48 +558,12 @@ body.pkp_page_index {
 		}
 	}
 
-	// Cover image — lighter scrim so photo shows through; text stays readable
+	// Cover image already includes journal/issue text — no overlay needed
 	&--photo {
 		background: @bg-shade;
 
 		.javs_home_issue_cover__overlay {
-			position: absolute;
-			inset: 0;
-			background: linear-gradient(
-				180deg,
-				rgba(0, 0, 0, 0.08) 0%,
-				rgba(0, 0, 0, 0.18) 38%,
-				fade(@bg-base, 72%) 100%
-			);
-			justify-content: flex-end;
-			padding-top: 48px;
-		}
-
-		.javs_home_issue_cover__center {
-			flex: 0;
-			justify-content: flex-end;
-			padding: 0 0 16px;
-		}
-
-		.javs_home_issue_cover__mid {
-			font-size: clamp(18px, 2vw, 24px);
-			text-shadow: 0 1px 12px rgba(0, 0, 0, .35);
-		}
-
-		.javs_home_issue_cover__mid-zh {
-			font-size: 15px;
-		}
-
-		.javs_home_issue_cover__top {
-			position: absolute;
-			top: 24px;
-			left: 28px;
-			right: 28px;
-			text-shadow: 0 1px 8px rgba(0, 0, 0, .4);
-		}
-
-		.javs_home_issue_cover__bot {
-			border-top-color: rgba(255, 255, 255, .25);
+			display: none;
 		}
 	}
 }

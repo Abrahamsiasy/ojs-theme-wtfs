@@ -228,14 +228,10 @@ body.pkp_page_issue {
 	}
 
 	&--photo {
-		.javs_issue_cover__overlay {
-			position: absolute;
-			inset: 0;
-			background: linear-gradient(180deg, fade(@bg-bar, 35%) 0%, fade(@bg-bar, 72%) 100%);
-		}
+		background: @bg-shade;
 
-		.javs_issue_cover__bot {
-			border-top-color: rgba(255, 255, 255, .22);
+		.javs_issue_cover__overlay {
+			display: none;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 # Huang Feilong <hfl@nominsang.org>, 2021.
 # wenshao521！ <wainixueer3334@gmail.com>, 2025.
+
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2025-05-15 10:57+0000\n"

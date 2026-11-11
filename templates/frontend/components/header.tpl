@@ -73,7 +73,8 @@
 							</svg>
 							{/literal}
 						</button>
-						{if !$requestedPage || $requestedPage === 'index'}
+						{* The journal homepage hero renders the page <h1> itself *}
+						{if (!$requestedPage || $requestedPage === 'index') && !$currentContext}
 							<h1 class="pkp_screen_reader">
 								{if $currentContext}
 									{$displayPageHeaderTitle|escape}

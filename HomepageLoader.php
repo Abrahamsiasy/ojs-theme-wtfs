@@ -24,10 +24,6 @@ class HomepageLoader
 {
     private static ?CustomThemePlugin $theme = null;
 
-    private const HERO_TITLE_MAX = 100;
-    private const HERO_SUBTITLE_MAX = 200;
-    private const HERO_SECONDARY_MAX = 64;
-
     public static function register(CustomThemePlugin $theme): void
     {
         self::$theme = $theme;
@@ -99,10 +95,9 @@ class HomepageLoader
             ->get();
 
         return [
-            'heroTagline' => self::getHeroTagline($journal, $locale),
-            'heroSubtitle' => self::getHeroSubtitle($journal),
-            'heroSecondaryTitle' => self::trimText($journal->getLocalizedName($locale), self::HERO_SECONDARY_MAX),
-            'eyebrow' => self::buildEyebrow($journal),
+            'heroTitle' => self::getHeroTitle($journal),
+            'heroDescription' => self::getHeroDescription($journal, $locale),
+            'eyebrow' => self::buildEyebrow(),
             'featuredArticle' => self::getFeaturedArticle($journal),
             'publishedCount' => $publishedCount,
             'issueCount' => $issueCount,
@@ -187,58 +182,48 @@ class HomepageLoader
         return ['html' => $html, 'count' => count($articles)];
     }
 
-    private static function getHeroTagline(Journal $journal, string $locale): string
+    /**
+     * Hero heading: the localized OJS journal name, in full.
+     */
+    private static function getHeroTitle(Journal $journal): string
     {
-        $description = strip_tags((string) $journal->getLocalizedData('description'));
-        if ($description !== '') {
-            $sentences = preg_split('/(?<=[.!?])\s+/', $description, 2);
-            $first = trim($sentences[0] ?? '');
-            if ($first !== '') {
-                return self::trimText($first, self::HERO_TITLE_MAX);
-            }
-        }
-
-        return self::trimText($journal->getLocalizedName($locale), self::HERO_TITLE_MAX);
+        return self::normalizeText((string) $journal->getLocalizedName());
     }
 
-    private static function getHeroSubtitle(Journal $journal): string
+    /**
+     * Hero paragraph, in full. Chinese UI uses the theme string; otherwise the
+     * OJS Journal Summary is used when it matches the approved English text,
+     * falling back to the theme string so About the Journal is never altered.
+     */
+    private static function getHeroDescription(Journal $journal, string $locale): string
     {
-        $description = strip_tags((string) $journal->getLocalizedData('description'));
-        if ($description === '') {
-            return '';
+        $themeText = self::normalizeText(__('plugins.themes.custom.homepage.heroDescription'));
+
+        if ($locale === 'zh_Hans') {
+            return $themeText;
         }
 
-        return self::trimText($description, self::HERO_SUBTITLE_MAX);
+        $summary = self::normalizeText(html_entity_decode(
+            strip_tags((string) $journal->getData('description', 'en')),
+            ENT_QUOTES | ENT_HTML5,
+            'UTF-8'
+        ));
+
+        return $summary === $themeText ? $summary : $themeText;
     }
 
-    private static function trimText(string $text, int $maxLen): string
+    private static function normalizeText(string $text): string
     {
-        $text = preg_replace('/\s+/u', ' ', trim($text));
-        if ($text === '' || mb_strlen($text) <= $maxLen) {
-            return $text;
-        }
-
-        $truncated = mb_substr($text, 0, $maxLen);
-        $lastSpace = mb_strrpos($truncated, ' ');
-        if ($lastSpace !== false && $lastSpace > (int) ($maxLen * 0.55)) {
-            $truncated = mb_substr($truncated, 0, $lastSpace);
-        }
-
-        return rtrim($truncated, '.,;:!?') . '…';
+        return (string) preg_replace('/\s+/u', ' ', trim($text));
     }
 
-    private static function buildEyebrow(Journal $journal): string
+    private static function buildEyebrow(): string
     {
-        $parts = [];
-        if (count($journal->getSupportedLocaleNames()) > 1) {
-            $parts[] = __('plugins.themes.custom.homepage.eyebrow.bilingual');
-        }
-        if ($journal->getData('publishingMode') == Journal::PUBLISHING_MODE_OPEN || $journal->getData('openAccessPolicy')) {
-            $parts[] = __('reader.openAccess');
-        }
-        $parts[] = __('plugins.themes.custom.topbar.peerReviewed');
-
-        return implode(' · ', $parts);
+        return implode(' · ', [
+            __('plugins.themes.custom.homepage.eyebrow.diamondOpenAccess'),
+            __('plugins.themes.custom.topbar.peerReviewed'),
+            __('plugins.themes.custom.homepage.eyebrow.internationalJournal'),
+        ]);
     }
 
     /**

@@ -222,6 +222,15 @@ msgstr "Register & Submit"
 msgid "plugins.themes.custom.homepage.eyebrow.bilingual"
 msgstr "Bilingual"
 
+msgid "plugins.themes.custom.homepage.eyebrow.diamondOpenAccess"
+msgstr "Diamond Open Access"
+
+msgid "plugins.themes.custom.homepage.eyebrow.internationalJournal"
+msgstr "International Journal"
+
+msgid "plugins.themes.custom.homepage.heroDescription"
+msgstr "The Journal of Taiji Science (JTS) is an international, peer-reviewed, Diamond Open Access scholarly journal published by the World Taiji Science Federation (WTSF). It publishes rigorous interdisciplinary research on Taiji, Qigong, mind-body science, integrative medicine, rehabilitation, and human health."
+
 msgid "plugins.themes.custom.option.homepageStatsReviewTime.label"
 msgstr "Homepage review time stat"
 

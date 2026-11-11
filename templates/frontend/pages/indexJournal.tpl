@@ -20,12 +20,9 @@
 				{if $javs.eyebrow}
 					<div class="javs_home_eyebrow">{$javs.eyebrow|escape}</div>
 				{/if}
-				<h2 class="javs_home_hero__title">{$javs.heroTagline|escape}</h2>
-				{if $javs.heroSecondaryTitle && $javs.heroSecondaryTitle != $javs.heroTagline}
-					<div class="javs_home_hero__zh">{$javs.heroSecondaryTitle|escape}</div>
-				{/if}
-				{if $javs.heroSubtitle && $javs.heroSubtitle != $javs.heroTagline}
-					<p class="javs_home_hero__subhead">{$javs.heroSubtitle|escape}</p>
+				<h1 class="javs_home_hero__title">{$javs.heroTitle|default:$currentJournal->getLocalizedName()|escape}</h1>
+				{if $javs.heroDescription}
+					<p class="javs_home_hero__subhead">{$javs.heroDescription|escape}</p>
 				{/if}
 				<div class="javs_home_hero__actions">
 					{if $issue}

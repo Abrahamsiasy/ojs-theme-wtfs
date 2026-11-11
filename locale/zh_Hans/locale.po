@@ -215,6 +215,15 @@ msgstr "注册并投稿"
 msgid "plugins.themes.custom.homepage.eyebrow.bilingual"
 msgstr "双语"
 
+msgid "plugins.themes.custom.homepage.eyebrow.diamondOpenAccess"
+msgstr "钻石开放获取"
+
+msgid "plugins.themes.custom.homepage.eyebrow.internationalJournal"
+msgstr "国际期刊"
+
+msgid "plugins.themes.custom.homepage.heroDescription"
+msgstr "《太极科学杂志》（Journal of Taiji Science，JTS）是由世界太极科学联合会（World Taiji Science Federation，WTSF）出版的国际性、同行评审、钻石开放获取学术期刊。本刊发表有关太极、气功、身心科学、整合医学、康复与人类健康的严谨跨学科研究。"
+
 msgid "plugins.themes.custom.issue.published"
 msgstr "出版日期 {$date}"
 

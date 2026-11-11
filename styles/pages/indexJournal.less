@@ -99,6 +99,15 @@ body.pkp_page_index {
 	opacity: .88;
 	margin-bottom: 14px;
 	font-weight: @bold;
+	max-width: 100%;
+	overflow-wrap: break-word;
+
+	// Chinese label reads overly spaced at the Latin tracking on small screens
+	@media (max-width: @screen-tablet) {
+		&:lang(zh) {
+			letter-spacing: .06em;
+		}
+	}
 }
 
 .javs_home_pill {
@@ -227,6 +236,13 @@ body.pkp_page_index {
 		line-height: 1.15;
 	}
 
+	// The hero heading is the page <h1>; keep it at the size it rendered
+	// at as an <h2> so the generic .pkp_structure_main h1 rule doesn't enlarge it.
+	.pkp_structure_main h1&__title {
+		font-size: @font-lead;
+		line-height: @line-lead;
+	}
+
 	&__zh {
 		font-family: @font-zh;
 		font-size: 20px;
@@ -242,10 +258,6 @@ body.pkp_page_index {
 		opacity: .92;
 		margin: 0 0 22px;
 		max-width: 520px;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 4;
-		overflow: hidden;
 	}
 
 	&__actions {
@@ -260,10 +272,6 @@ body.pkp_page_index {
 		&__grid {
 			grid-template-columns: 1fr;
 			gap: 32px;
-		}
-
-		&__subhead {
-			-webkit-line-clamp: 3;
 		}
 	}
 }
